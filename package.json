@@ -1,0 +1,32 @@
+ {
+  "name": "eslint-config-react-crowdanalyzer",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": "CrowdAnalyzer <dev@crowdanalyzer.com>",
+  "description": "Crowd Analyzer eslint react configuration",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crowdanalyzer/eslint-react.git"
+  },
+  "engine": {
+    "node": ">=10.14.0",
+    "npm": ">=6.0.0"
+  },
+  "contributors": [
+    {
+      "name": "Maha Zaid <MahaZaid>",
+      "email": "maha.raafat@crowdanalyzer.com"
+    }
+  ],
+  "main": "./index",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint .",
+    "docker": "docker-compose build --no-cache && docker-compose run node"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.11.1",
+    "react": "^16.4.0"
+  }
+}

@@ -1,0 +1,60 @@
+version: 2
+  references:
+    workdir: &workdir
+      /var/code
+  
+     attach_workdir: &attach_workdir
+      attach_workspace:
+        at: *workdir
+  
+     images: &images
+      docker:
+        - image: node:10.14.0
+      working_directory: *workdir
+  
+   jobs:
+    setup:
+      <<: *images
+      steps:
+        - checkout
+        - run:
+            name: Installing dependencies
+            command: npm install
+        - persist_to_workspace:
+            root: *workdir
+            paths:
+              - ./*
+  
+     lint:
+      <<: *images
+      steps:
+        - *attach_workdir
+        - run:
+            name: Running lint
+            command: npm run lint
+  
+     publish:
+      <<: *images
+      steps:
+        - *attach_workdir
+        - run:
+            name: Publishing to npmjs
+            command: npm publish
+  
+   workflows:
+    version: 2
+    test_and_publish:
+      jobs:
+        - setup:
+            context: npm
+        - lint:
+            context: npm
+            requires:
+              - setup
+        - publish:
+            context: npm
+            requires:
+              - lint
+            filters:
+              branches:
+                only: master
