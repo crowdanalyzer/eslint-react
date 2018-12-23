@@ -13,33 +13,33 @@ references:
   working_directory: *workdir
   
 jobs:
-setup:
-  <<: *images
-  steps:
-    - checkout
-    - run:
-        name: Installing dependencies
-        command: npm install
-    - persist_to_workspace:
-        root: *workdir
-        paths:
-          - ./*
+  setup:
+    <<: *images
+    steps:
+      - checkout
+      - run:
+          name: Installing dependencies
+          command: npm install
+      - persist_to_workspace:
+          root: *workdir
+          paths:
+            - ./*
   
   lint:
-  <<: *images
-  steps:
-    - *attach_workdir
-    - run:
-        name: Running lint
-        command: npm run lint
+    <<: *images
+    steps:
+      - *attach_workdir
+      - run:
+          name: Running lint
+          command: npm run lint
 
   publish:
-  <<: *images
-  steps:
-    - *attach_workdir
-    - run:
-        name: Publishing to npmjs
-        command: npm publish
+    <<: *images
+    steps:
+      - *attach_workdir
+      - run:
+          name: Publishing to npmjs
+          command: npm publish
   
 workflows:
   version: 2
