@@ -42,19 +42,19 @@ setup:
         command: npm publish
   
 workflows:
-version: 2
-test_and_publish:
-  jobs:
-    - setup:
-        context: npm
-    - lint:
-        context: npm
-        requires:
-          - setup
-    - publish:
-        context: npm
-        requires:
-          - lint
-        filters:
-          branches:
-            only: master
+  version: 2
+  test_and_publish:
+    jobs:
+      - setup:
+          context: npm
+      - lint:
+          context: npm
+          requires:
+            - setup
+      - publish:
+          context: npm
+          requires:
+            - lint
+          filters:
+            branches:
+              only: master
