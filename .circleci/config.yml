@@ -4,8 +4,8 @@ references:
     /var/code
   
   attach_workdir: &attach_workdir
-  attach_workspace:
-    at: *workdir
+    attach_workspace:
+      at: *workdir
   
   images: &images
   docker:
