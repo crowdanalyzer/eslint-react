@@ -6,12 +6,12 @@ references:
   attach_workdir: &attach_workdir
     attach_workspace:
       at: *workdir
-  
+
   images: &images
-  docker:
-    - image: node:10.14.0
-  working_directory: *workdir
-  
+    docker:
+      - image: node:10.14.0
+    working_directory: *workdir
+
 jobs:
   setup:
     <<: *images
@@ -24,7 +24,7 @@ jobs:
           root: *workdir
           paths:
             - ./*
-  
+
   lint:
     <<: *images
     steps:
@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Publishing to npmjs
           command: npm publish
-  
+
 workflows:
   version: 2
   test_and_publish:
