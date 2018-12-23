@@ -2,7 +2,7 @@ version: 2
 references:
   workdir: &workdir
     /var/code
-
+  
   attach_workdir: &attach_workdir
     attach_workspace:
       at: *workdir
