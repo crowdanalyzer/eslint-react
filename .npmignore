@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Except
+!src/**
+!index.js
+!package.json
+!README.md
