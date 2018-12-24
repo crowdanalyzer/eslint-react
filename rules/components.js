@@ -9,35 +9,35 @@ module.exports = {
         'react/display-name': ['error', { ignoreTranspilerName: true }],
 
         // Enforce the closing bracket location for JSX multiline elements.
-        'react/jsx-closing-bracket-location': [ 'error', 'props-aligned'],
+        'react/jsx-closing-bracket-location': ['error', 'props-aligned'],
 
         // Validate closing tag location in JSX
-        'react/jsx-closing-tag-location': [ 'error'],
+        'react/jsx-closing-tag-location': ['error'],
 
         // Enforce or disallow spaces around equal signs in JSX attributes.
-        'react/jsx-equals-spacing': [ 'error', 'never'],
+        'react/jsx-equals-spacing': ['error', 'never'],
 
         // This option validates a specific indentation style for JSX.
-        'react/jsx-indent': [ 'error', 'tab'],
+        'react/jsx-indent': ['error', 'tab'],
 
         // Enforce stateless React Components to be written as a pure function.
-        'react/prefer-stateless-function': [ 'error'],
+        'react/prefer-stateless-function': ['error'],
 
         // Enforce ES5 or ES6 class for React Components.
-        'react/prefer-es6-class': [ 'error', 'always'],
+        'react/prefer-es6-class': ['error', 'always'],
 
         // Updating the state during the componentWillUpdate step can lead to indeterminate component state and is not allowed.
-        'react/no-will-update-set-state': [ 'error', 'disallow-in-func'],
+        'react/no-will-update-set-state': ['error', 'disallow-in-func'],
 
         // Enforce or disallow spaces inside of curly braces in JSX attributes and expressions.
-        'react/jsx-curly-spacing': [ 'error', {
+        'react/jsx-curly-spacing': ['error', {
             'when': 'never',
             'allowMultiline': false,
             'children': true,
         }],
 
         // Prevent usage of unknown DOM property.
-        'react/no-unknown-property': [ 'error'],
+        'react/no-unknown-property': ['error'],
 
         // Enforce PascalCase for user-defined JSX components.
         'react/jsx-pascal-case': ['error', { allowAllCaps: false }],
@@ -61,21 +61,21 @@ module.exports = {
         'react/jsx-no-comment-textnodes': ['error'],
 
         // Prevent multiple component definition per file
-        'react/no-multi-comp': [ 'error', {
+        'react/no-multi-comp': ['error', {
             ignoreStateless: false
         }],
 
         // Prevent usage of unsafe lifecycle methods
-        'react/no-unsafe': [ 'error'],
+        'react/no-unsafe': ['error'],
 
         // Restrict file extensions that may contain JSX
-        'react/jsx-filename-extension': [ 'error', { extensions: ['.js' , '.jsx'] }],
+        'react/jsx-filename-extension': ['error', { extensions: ['.js' , '.jsx'] }],
 
         // Enforce boolean attributes notation in JSX
-        'react/jsx-boolean-value': [ 'error', 'never'],
+        'react/jsx-boolean-value': ['error', 'never'],
 
         // When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecycle methods, event handlers, etc.
-        'react/sort-comp': [ 'error', {
+        'react/sort-comp': ['error', {
             order: [
                 'static-methods',
                 'lifecycle',
@@ -113,7 +113,37 @@ module.exports = {
             }
         }],
 
+        //Prevent usage of button elements without an explicit type attribute
+        'react/button-has-type': ['error', { button: true, submit: true, reset: true }],
+
         // Enforce ES5 or ES6 class for returning value in render function
-        'react/require-render-return': [ 'error'],
+        'react/require-render-return': ['error'],
+
+        //Prevent definitions of unused state
+        'react/no-unused-state': ['error'],
+
+         //Prevent invalid characters from appearing in markup
+        'react/no-unescaped-entities': ['error', { forbid: ['>', '"', '\'', '}'] }],
+
+        // Prevent this from being used in stateless functional components
+        'react/no-this-in-sfc': ['error'],
+
+        // Prevent usage of the return value of React.render
+        'react/no-render-return-value': ['error'],
+
+        // Prevent usage of isMounted
+        'react/no-is-mounted': ['error'],
+
+        // Prevent direct mutation of this.state
+        'react/no-direct-mutation-state': ['error'],
+        
+        // Prevent usage of setState
+        'react/no-set-state': ['error'],
+
+        // Prevent using this.state within a this.setState
+        'react/no-access-state-in-setstate': ['error'],
+
+        // Prevent usage of Array index in keys
+        'react/no-array-index-key': ['error'],
     },
 };

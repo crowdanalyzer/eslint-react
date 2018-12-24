@@ -6,7 +6,6 @@ module.exports = {
         './rules/props',
         './rules/stylistic-issues',
     ].map(require.resolve),
-
     parserOptions: {
         ecmaVersion: 8,
         sourceType: 'module',
@@ -16,9 +15,7 @@ module.exports = {
         },
     },
     parser: 'babel-eslint',
-    plugins: [
-        'eslint-plugin-react',
-    ],
+    plugins: ['eslint-plugin-react'],
     settings: {
         react: {
             version: "16.4.0",
@@ -30,4 +27,3 @@ module.exports = {
         mocha: true,
     },
 };
-

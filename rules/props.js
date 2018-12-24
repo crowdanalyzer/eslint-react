@@ -11,29 +11,29 @@ module.exports = {
         'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: false }],
 
         // Forbid foreign propTypes
-        'react/forbid-foreign-prop-types': [ 'error'],
+        'react/forbid-foreign-prop-types': ['error'],
 
         // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children.
-        "react/jsx-curly-brace-presence": [ 'error', { props: 'never' }],
+        "react/jsx-curly-brace-presence": ['error', { props: 'never' }],
 
         // Prevent missing props validation in a React component definition
-        'react/prop-types': [ 'error'],
+        'react/prop-types': ['error'],
 
         // Prevent definitions of unused prop types
-        'react/no-unused-prop-types': [ 'error', { skipShapeProps: true }],
+        'react/no-unused-prop-types': ['error', { skipShapeProps: true }],
 
         // Enforce propTypes declarations alphabetical sorting
-        'react/sort-prop-types': [ 'error', {
+        'react/sort-prop-types': ['error', {
             ignoreCase: true,
             requiredFirst: true,
             sortShapeProp: true,
         }],
 
         // Enforce a defaultProps definition for every prop that is not a required prop
-        'react/require-default-props': [ 'error', { forbidDefaultForRequired: false }],
+        'react/require-default-props': ['error', { forbidDefaultForRequired: false }],
 
         // Enforce props alphabetical sorting
-        'react/jsx-sort-props': [ 'error', {
+        'react/jsx-sort-props': ['error', {
             callbacksLast: true,
             shorthandFirst: true,
             ignoreCase: true,
@@ -47,10 +47,10 @@ module.exports = {
         'react/jsx-no-duplicate-props': ['error', { ignoreCase: false }],
 
         // This option validates a specific indentation style for props.
-        'react/jsx-indent-props': [ 'error', 'tab'],
+        'react/jsx-indent-props': ['error', 'tab'],
 
         // Limit maximum of props on a single line in JSX
-        'react/jsx-max-props-per-line': [ 'error', { maximum: 1 }],
+        'react/jsx-max-props-per-line': ['error', { maximum: 1 }],
 
         // Prevent problem with children and props.dangerouslySetInnerHTML
         'react/no-danger-with-children': ['error'],
@@ -59,12 +59,12 @@ module.exports = {
         'react/no-children-prop': ['error'],
 
         // Configure the position of the first property
-        'react/jsx-first-prop-new-line': [ 'error', 'never'],
+        'react/jsx-first-prop-new-line': ['error', 'never'],
 
         // Disallow multiple spaces between inline JSX props
         'react/jsx-props-no-multi-spaces': ['error'],
 
         // Enforce style prop value being an object
-        'react/style-prop-object': [ 'error'],
+        'react/style-prop-object': ['error'],
     },
 };
