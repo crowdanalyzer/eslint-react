@@ -16,11 +16,6 @@ module.exports = {
     },
     parser: 'babel-eslint',
     plugins: ['eslint-plugin-react'],
-    settings: {
-        react: {
-            version: "16.4.0",
-        },
-    },
     env: {
         node: true,
         es6: true,
