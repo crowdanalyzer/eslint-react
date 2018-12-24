@@ -12,14 +12,13 @@ module.exports = {
         sourceType: 'module',
         ecmaFeatures: {
             jsx: true,
-            modules: true
         },
     },
 
     parser: 'babel-eslint',
 
     plugins: ['eslint-plugin-react'],
-    
+
     env: {
         node: true,
         es6: true,
