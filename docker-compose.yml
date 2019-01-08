@@ -3,7 +3,7 @@ services:
   node:
     tty: true
     stdin_open: true
-    container_name: eslint-config-react-crowdanalyzer
+    container_name: eslint-react
     build:
       context: .
     volumes:
