@@ -80,7 +80,7 @@ module.exports = {
          */
         'react/jsx-handler-names': ['error', {
             eventHandlerPrefix: 'handle',
-            eventHandlerPropPrefix: 'on'
+            eventHandlerPropPrefix: 'on',
         }],
 
         /**
@@ -88,7 +88,7 @@ module.exports = {
          * This rule is aimed to enforce consistent indentation style.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
          */
-        'react/jsx-indent': ['error', 4, { checkAttributes: true }],
+        'react/jsx-indent': ['error', 4],
 
         /**
          * This option validates a specific indentation style for props.
@@ -113,7 +113,7 @@ module.exports = {
          */
         'react/jsx-max-props-per-line': ['error', {
             maximum: 1,
-            when: 'multiline'
+            when: 'multiline',
         }],
 
         /**
@@ -129,7 +129,7 @@ module.exports = {
             ignoreRefs: false,
             allowArrowFunctions: false,
             allowFunctions: false,
-            allowBind: false
+            allowBind: false,
         }],
 
         /**
@@ -142,7 +142,8 @@ module.exports = {
 
         /**
          * Prevent duplicate properties in JSX
-         * Creating JSX elements with duplicate props can cause unexpected behavior in your application.
+         * Creating JSX elements with duplicate props can cause unexpected behavior 
+         * in your application.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
          */
         'react/jsx-no-duplicate-props': ['error', { ignoreCase: true }],
@@ -158,7 +159,8 @@ module.exports = {
 
         /**
          * Disallow undeclared variables in JSX
-         * This rule helps locate potential ReferenceErrors resulting from misspellings or missing components.
+         * This rule helps locate potential ReferenceErrors resulting from misspellings or 
+         * missing components.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-undef.md
          */
         'react/jsx-no-undef': ['error', { allowGlobals: false }],
@@ -174,7 +176,7 @@ module.exports = {
          * Enforce curly braces or disallow unnecessary curly braces in JSX props and / or children.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
          */
-        "react/jsx-curly-brace-presence": ['error', 'never'],
+        'react/jsx-curly-brace-presence': ['error', 'never'],
 
         /**
          * Enforce shorthand or standard form for React fragments 

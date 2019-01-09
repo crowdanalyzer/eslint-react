@@ -80,7 +80,7 @@ module.exports = {
          * Use the shared settings to specify the React version.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-deprecated.md
          */
-        'react/no-deprecated': [ 'error'],
+        'react/no-deprecated': ['error'],
 
         /**
          * Updating the state after a component mount will trigger a second render() 
@@ -99,13 +99,15 @@ module.exports = {
         /**
          * NEVER mutate this.state directly, as calling setState() afterwards may replace the 
          * mutation you made.Treat this.state as if it were immutable. 
-         * The only place that 's acceptable to assign this.state is in a ES6 class component constructor.
+         * The only place that 's acceptable to assign this.state is in a ES6 class 
+         * component constructor.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md
          */
         'react/no-direct-mutation-state': ['error'],
 
         /**
-         * Facebook will eventually deprecate findDOMNode as it blocks certain improvements in React in the future.
+         * Facebook will eventually deprecate findDOMNode as it blocks certain 
+         * improvements in React in the future.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-find-dom-node.md
          */
         'react/no-find-dom-node': ['error'],
@@ -118,7 +120,8 @@ module.exports = {
         'react/no-is-mounted': ['error'],
 
         /**
-         * Declaring only one component per file improves readability and reusability of components.
+         * Declaring only one component per file improves readability and 
+         * reusability of components.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
          */
         'react/no-multi-comp': ['error', { ignoreStateless: false }],
@@ -147,7 +150,8 @@ module.exports = {
 
         /** 
          * Prevent invalid characters from appearing in markup
-         * referring to components by setting a property on the this object in the reference callback.
+         * referring to components by setting a property on the this object 
+         * in the reference callback.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md
          */
         'react/no-string-refs': ['error'],
@@ -259,7 +263,7 @@ module.exports = {
                 'instance-methods',
                 'everything-else',
                 'lifecycle',
-                'render'
+                'render',
             ],
         }],
 
@@ -294,8 +298,8 @@ module.exports = {
             overrides: {
                 from: { after: true },
                 default: { after: true },
-                if: { after: false }
-            }
+                if: { after: false },
+            },
         }],
     },
 };
