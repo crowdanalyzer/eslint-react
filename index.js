@@ -2,9 +2,8 @@
 
 module.exports = {
     extends: [
-        './rules/components',
-        './rules/props',
-        './rules/stylistic-issues',
+        './rules/jsx',
+        './rules/react',
     ].map(require.resolve),
 
     parserOptions: {
