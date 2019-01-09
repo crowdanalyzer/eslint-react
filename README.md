@@ -13,9 +13,8 @@
 7. [Props](#Props)
 8. [Refs](#Refs)
 9. [Ordering](#Ordering)
-10. [IsMounted](#IsMounted)
-11. [State](#State)
-13. [Styles](#Styles)
+10. [State](#State)
+11. [Styles](#Styles)
 
 ## [Basic Rules](#Basic-Rules)
 
@@ -31,7 +30,7 @@ var Hello = createReactClass({
 
 var HelloJohn = createReactClass({
   render: function () {  
-    return <Hello name = "John" / > ;
+    return <Hello name = "John" /> ;
   }
 });
 
@@ -43,7 +42,7 @@ var HelloJohn = createReactClass({
   }
 });
 ``` 
-  
+
 1.2 **Always** use JSX syntax.
 
 1.3 **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
@@ -55,33 +54,28 @@ var HelloJohn = createReactClass({
 ```javascript
 // bad
 const Listing = React.createClass({
-  // ...
   render() {
     return <div>{this.state.hello}</div>;
   }
 });
 
-// good
-class Listing extends React.Component {
-  // ...
-  render() {
-    return <div>{this.state.hello}</div>;
-  }
-}
-
-// bad
 class Listing extends React.Component {
   render() {
     return <div>{this.props.hello}</div>;
   }
 }
 
-// bad (relying on function name inference is discouraged)
 const Listing = ({ hello }) => (
   <div>{hello}</div>
 );
 
 // good
+class Listing extends React.Component {
+  render() {
+    return <div>{this.state.hello}</div>;
+  }
+}
+
 function Listing({ hello }) {
   return <div>{hello}</div>;
 }
@@ -112,14 +106,10 @@ function MyComponent() {
 ```javascript
 // bad
 import reservationCard from './ReservationCard';
-
-// good
-import ReservationCard from './ReservationCard';
-
-// bad
 const ReservationItem = <ReservationCard />;
 
 // good
+import ReservationCard from './ReservationCard';
 const reservationItem = <ReservationCard />;
 ```
 
@@ -128,15 +118,13 @@ const reservationItem = <ReservationCard />;
 ```javascript
 // bad
 import Footer from './Footer/Footer';
-
-// bad
 import Footer from './Footer/index';
 
 // good
 import Footer from './Footer';
 ```
     
-## [Alignment](# Alignment)
+## [Alignment](#Alignment)
 5.1 Avoid extra closing tags for components without children ([self-closing-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)) 
    
 ```javascript
@@ -150,7 +138,7 @@ var HelloJohn = <Hello name="John" />;
 var Profile = <Hello name="John"><img src="picture.png" /></Hello>;\
 var HelloSpace = <Hello>{' '}</Hello>;
 ```
-    
+
 5.2 Enforce the closing bracket location for JSX multiline elements, the closing bracket should be placed **after props** ([closing-brackets](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md))
 
 ```javascript 
@@ -217,7 +205,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 />
 ```
 
-5.7 Limit every line in JSX to one expression each. ([jsx-one-expression-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md))
+5.6 Limit every line in JSX to one expression each. ([jsx-one-expression-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md))
    
 ```javascript 
 // bad
@@ -233,7 +221,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 </App>
 ```
 
-5.8 Avoid unnecessary curly braces in JSX props and / or children. ([jsx-curly-brace-presence](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md))
+5.7 Avoid unnecessary curly braces in JSX props and / or children. ([jsx-curly-brace-presence](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md))
 
 ```javascript
 // bad
@@ -247,7 +235,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 
 ## [Spacing](#Spacing)
 
-6.1 Avoid using extra spaces, React removes extraneous new lines between elements when possible, it is possible to end up with inline elements that are not rendered with spaces between them and adjacent text. This is often indicative of an error, so this rule attempts to detect. ([jsx-props-no-multi-spaces](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md))
+6.1 Avoid using extra spaces, React removes extraneous new lines between elements when possible, it is possible to end up with inline elements that are not rendered with spaces between them and adjacent text. This is often indicative of an error, so this rule attempts to detect.([jsx-child-element-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-child-element-spacing.md))
 
 ``` javascript
 // bad
@@ -273,7 +261,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 </div>
 ```
 
-6.2 Avoid spaces inside of curly braces in JSX attributes and expressions or around equal signs in JSX attributes. ([jsx-equals-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md))
+6.2 Avoid spaces inside of curly braces in JSX attributes and expressions or around equal signs in JSX attributes([jsx-curly-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md)) & ([jsx-equals-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md))
    
 ```javascript
 // bad
@@ -299,7 +287,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 <Hello {...props} />;
 ```
     
-6.3 Enforce consistent indentation style. `4 spaces`, It applies on components & props ([jsx-equals-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md))
+6.3 Enforce consistent indentation style. `4 spaces`, It applies on components & props.([jsx-indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md)) & ([jsx-indent-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md))
     
 ``` javascript
 // bad
@@ -312,7 +300,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 </App>
 ```
 
-6.4 Avoid multiple spaces between inline JSX props
+6.4 Avoid multiple spaces between inline JSX props. ([jsx-props-no-multi-spaces](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md))
    
 ```javascript
 // bad
@@ -324,7 +312,7 @@ var HelloSpace = <Hello>{' '}</Hello>;
 <App very={true} cozy={true}/>
 ```
 
-6.5 Avoid spaces after the opening bracket, before the closing bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements. ([jsx-tag-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md))
+6.4 Avoid spaces after the opening bracket, before the closing bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements.([jsx-tag-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md))
 
 ```javascript
 // bad
@@ -485,7 +473,7 @@ React.createElement("div", {}, 'Children')
 React.createElement("div", 'Child 1', 'Child 2')
 ```
 
-7.12 Ensure that the value of the prop `style` be an object or a variable that is an object. ([style-prop-object](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md))
+7.8 Ensure that the value of the prop `style` be an object or a variable that is an object. ([style-prop-object](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md))
   
 ```javascript
 // bad
@@ -502,7 +490,7 @@ const styles = { color: "red" };
 <div style={styles} />
 ```
 
-7.13 Avoid passing a boolean attribute in jsx without specifying its value. ([jsx-boolean-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md))
+7.9 Avoid passing a boolean attribute in jsx without specifying its value. ([jsx-boolean-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md))
    
 ```javascript
 // bad
@@ -512,7 +500,7 @@ var Hello = <Hello personal />;
 var Hello = <Hello personal={true} />;
 ```
 
-7.14 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
+7.10 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
    
 ```javascript
 // bad
@@ -524,7 +512,7 @@ var Hello = <Hello personal={true} />;
 <MyComponent onChange={this.props.onFoo} />
 ```
 
-7.16 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
+7.11 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
  
 ```javascript
 // bad
@@ -550,7 +538,6 @@ var Hello = createReactClass({
 var Hello = createReactClass({
   componentDidMount: function() {
     var component = this.hello;
-    // ...do something with component
   },
   render() {
     return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
@@ -617,7 +604,7 @@ var Component = createReactClass({
 ```
 
 ## [State](#State)
-11.1 Prevent usage of `this.state` inside `setState` calls. Such usage of `this.state` might result in errors when two state calls are called in batch and thus referencing old state and not the current state. An example can be an increment function:
+10.1 Prevent usage of `this.state` inside `setState` calls. Such usage of `this.state` might result in errors when two state calls are called in batch and thus referencing old state and not the current state. An example can be an increment function:
    
 ```javascript
 // bad 
@@ -631,7 +618,7 @@ function increment() {
 }
 ```
 
-11.2 Avoid updating the state after a **component mount** or **component update** as it  will trigger a second `render()` call and can lead to property/layout thrashing. ([no-will-update-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-will-update-set-state.md))
+10.2 Avoid updating the state after a **component mount** or **component update** as it  will trigger a second `render()` call and can lead to property/layout thrashing. ([no-will-update-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-will-update-set-state.md))
     
 ```javascript
 // bad
@@ -681,7 +668,7 @@ var Hello = createReactClass({
 });
 ```
 
-11.2 NEVER mutate `this.state` directly, as calling `setState()` afterwards may replace the mutation you made. Treat `this.state` as if it were immutable.([no-direct-mutation-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md))
+10.3 NEVER mutate `this.state` directly, as calling `setState()` afterwards may replace the mutation you made. Treat `this.state` as if it were immutable.([no-direct-mutation-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md))
     
 ```javascript
 // bad
@@ -727,7 +714,7 @@ class Hello extends React.Component {
 }
 ```
     
-11.5 Avoid updating the state during the componentWillUpdate step as it can lead to indeterminate component state and is not allowed.
+10.4 Avoid updating the state during the componentWillUpdate step as it can lead to indeterminate component state and is not allowed.
     
 ```javascript
 // bad
@@ -755,7 +742,7 @@ var Hello = createReactClass({
 
 ## [Styles](#Styles)
 
-12.1 Always use double quotes (") for JSX attributes. eslint: jsx-quotes
+11.1 Always use double quotes (") for JSX attributes. eslint: jsx-quotes
 ```javascript
 // bad
 <Foo bar='bar' />
