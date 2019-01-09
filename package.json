@@ -24,16 +24,15 @@
     "depcheck": "./node_modules/.bin/npm-check --ignore npm-check",
     "docker": "docker-compose build --no-cache && docker-compose run node"
   },
-  "dependencies": {
-    "babel-eslint": "^10.0.1"
-  },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint": "5.11.0",
     "eslint-config-crowdanalyzer": "^1.4.1",
     "eslint-plugin-react": "^7.12.3",
     "npm-check": "^5.9.0"
   },
   "peerDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint": ">= 5.11.0 < 6",
     "eslint-plugin-react": ">= 7.11.1 < 8"
   }

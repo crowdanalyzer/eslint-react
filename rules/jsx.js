@@ -4,8 +4,8 @@ module.exports = {
     rules: {
         /**
          * Enforce boolean attributes notation in JSX
-         * When using a boolean attribute in JSX, you can set the attribute value to t
-         * rue or omit the value.This rule will enforce you to add the boolean value
+         * When using a boolean attribute in JSX, you can set the attribute value to
+         * true or omit the value.This rule will enforce you to add the boolean value
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
          */
         'react/jsx-boolean-value': ['error', 'always'],
@@ -91,7 +91,7 @@ module.exports = {
         /**
          * This option validates a specific indentation style for props.
          * This rule is aimed to enforce consistent indentation style.
-         *  use 4 spaces for indentation
+         * use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
          */
         'react/jsx-indent-props': ['error', 4],
