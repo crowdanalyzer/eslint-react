@@ -292,14 +292,5 @@ module.exports = {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
          */
         'react/void-dom-elements-no-children': ['error'],
-
-        // keywords spacing
-        'keyword-spacing': ['error', {
-            overrides: {
-                from: { after: true },
-                default: { after: true },
-                if: { after: false },
-            },
-        }],
     },
 };

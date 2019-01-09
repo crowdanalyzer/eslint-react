@@ -6,27 +6,29 @@
 
 # [Table of Contents](#table-of-contents)
 
-1. [Basic-Rules](# Basic-Rules)
-2. [Class vs React.createClass vs Stateless](# Class-vs-React.createClass-vs-Stateless)
-3. [Naming](# Naming)
-4. [Declaration](# Declaration)
-5. [Alignment](# Alignment)
-6. [Spacing](# Spacing)
-7. [Props](# Props)
-8. [Refs](# Refs)
-9. [Ordering](# Ordering)
-10. [IsMounted](# IsMounted)
-11. [State](# State)
+1. [Basic-Rules](#Basic-Rules)
+2. [Class vs React.createClass vs Stateless](#Class-vs-React.createClass-vs-Stateless)
+3. [Naming](#Naming)
+4. [Declaration](#Declaration)
+5. [Alignment](#Alignment)
+6. [Spacing](#Spacing)
+7. [Props](#Props)
+8. [Refs](#Refs)
+9. [Ordering](#Ordering)
+10. [IsMounted](#IsMounted)
+11. [State](#State)
+13. [Styles](#Styles)
 
-## [Basic Rules](# Basic-Rules)
+## [Basic Rules](#Basic-Rules)
+
 1.1 **Only** include **one** React component per file.([no-multi-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md))
     
    ``` javascript
    // bad
     var Hello = createReactClass({
-      render: function() {
-        return <div>Hello {this.props.name}</div>;
-      }
+        render: function() {
+          return <div>Hello {this.props.name}</div>;
+        }
     });
     
     var HelloJohn = createReactClass({
@@ -62,7 +64,7 @@
   
   1.3-  **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
 
-## [Class vs React.createClass vs Stateless](# Class-vs-React.createClass-vs-Stateless)
+## [Class vs React.createClass vs Stateless](#Class-vs-React.createClass-vs-Stateless)
 
 2.1- **Avoid** using `this` in stateless functional components.([prefer-stateless-function](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md))
 
@@ -96,7 +98,7 @@
       }
   ```
 
-## [Naming](# Naming)
+## [Naming](#Naming)
 
 3.1- **Extensions**: Use `.jsx` extension for React components..([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
   
@@ -190,7 +192,7 @@ and the following react lifecycle methods:
     }
   ```
 
-## [Declaration](# Declaration)
+## [Declaration](#Declaration)
 4.1- While Declaring a Button you have to specify the button type (i.e: one of "button", "submit", and "reset")([button-has-type](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/button-has-type.md))
 
 ``` javascript
@@ -373,7 +375,7 @@ var HelloJohn = <Hello name="John"></Hello>;
     />
 ```
 
-5.5 -  Limit the maximum of props on a single line can improve readability, If it is multiline expression, then it’s one property per line([sx-max-props-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md))
+5.5 - Limit the maximum of props on a single line can improve readability, If it is multiline expression, then it’s one property per line([sx-max-props-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md))
 
   ``` javascript 
 // bad
@@ -459,7 +461,7 @@ var HelloJohn = <Hello name="John"></Hello>;
     <App prop="Hello world" attr="foo" />;
 ```
 
-## [Spacing](# Spacing)
+## [Spacing](#Spacing)
 
 6.1 - Avoid using extra spaces, React removes extraneous new lines between elements when possible, it is possible to end up with inline elements that are not rendered with spaces between them and adjacent text. This is often indicative of an error, so this rule attempts to detect.([jsx-props-no-multi-spaces](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md))
 
@@ -553,7 +555,7 @@ var HelloJohn = <Hello name="John"></Hello>;
       <Hello firstname="John" />
   ```
   
-  ## [Props](# Props)
+  ## [Props](#Props)
 
 7.1 - Prevent missing props validation in a React component definition. ([prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md))
 
@@ -849,7 +851,7 @@ var HelloJohn = <Hello name="John"></Hello>;
       <Hello name="John" />;
    ```
 
-## [Refs](# Refs)
+## [Refs](#Refs)
 
 8.1- Currently, two ways are supported by React to refer to components. The first way, providing a string identifier, is now considered legacy in the official documentation. The documentation now prefers a second method -- referring to components by setting a property on the `this` object in the reference callback.([no-string-refs](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md))
 
@@ -890,7 +892,7 @@ var HelloJohn = <Hello name="John"></Hello>;
     var Hello = <a></a>
    ```
 
-## [Ordering](# Ordering)
+## [Ordering](#Ordering)
 9.1 - When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecycle methods, event handlers, etc. ([sort-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md))
    
   ```javascript
@@ -933,7 +935,7 @@ var HelloJohn = <Hello name="John"></Hello>;
 
 ```
 
-## [IsMounted](# IsMounted)
+## [IsMounted](#IsMounted)
 
 - Do not use `isMounted`. eslint: `[react/no-is-mounted](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md)`
 > Why? `[isMounted](https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html)` [is an anti-pattern](https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html), is not available when using ES6 classes, and is on its way to being officially deprecated.
@@ -1149,4 +1151,17 @@ var HelloJohn = <Hello name="John"></Hello>;
         return <div>Hello {this.props.name}</div>;
       }
     });    
-    ```
+  ```
+
+## [Styles](#Styles)
+
+13.1- Always use double quotes (") for JSX attributes. eslint: jsx-quotes
+``` javascript
+// bad
+<Foo bar='bar' />
+<Foo style={{ left: '20px' }} />
+
+// good
+<Foo bar="bar" />
+<Foo style={{ left: "20px" }} />
+```

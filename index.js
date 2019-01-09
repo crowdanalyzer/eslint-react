@@ -4,6 +4,7 @@ module.exports = {
     extends: [
         './rules/jsx',
         './rules/react',
+        './rules/stylistic-issues',
     ].map(require.resolve),
 
     parserOptions: {
