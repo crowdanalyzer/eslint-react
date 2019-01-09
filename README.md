@@ -719,10 +719,10 @@ class Hello extends React.Component {
 // bad
 var Hello = createReactClass({
   componentWillUpdate: function() {
-      this.setState({
-        name: this.props.name.toUpperCase()
-      });
-    },
+    this.setState({
+      name: this.props.name.toUpperCase()
+    });
+  },
   render: function() {
     return <div>Hello {this.state.name}</div>;
   }
@@ -742,6 +742,7 @@ var Hello = createReactClass({
 ## [Styles](#Styles)
 
 10.1 Always use double quotes (") for JSX attributes. eslint: jsx-quotes
+
 ```javascript
 // bad
 <Foo bar='bar' />
