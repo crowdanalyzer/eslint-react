@@ -121,7 +121,6 @@
       return <div />;
     }
 
-
 - **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`.
 - **Reference Naming**: Use PascalCase for React components and camelCase for their instances
     ``` // bad
@@ -156,15 +155,12 @@
     // good
     <MyComponent variant="fancy" />
 
-
 - Ensure no casing typos were made declaring static class properties and lifecycle methods. Checks that declared `propTypes`, `contextTypes` and `childContextTypes` is supported by [react-props](https://github.com/facebook/prop-types), 
 
 It makes sure that the following class properties have no casing typos:
-
     `propTypes`, `contextTypes`, `childContextTypes`, `defaultProps`
 
 and the following react lifecycle methods:
-
    `getDerivedStateFromProps`, `componentWillMount`, `UNSAFE_componentWillMount`, `componentDidMount`
     `componentWillReceiveProps`, `UNSAFE_componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`
     `UNSAFE_componentWillUpdate`, `getSnapshotBeforeUpdate`, `componentDidUpdate`, `componentDidCatch`
@@ -185,7 +181,6 @@ and the following react lifecycle methods:
     class MyComponent extends React.Component {
       static contextTypes = {}
     }
-
 
 # Declaration
 
@@ -208,7 +203,6 @@ and the following react lifecycle methods:
     var Hello = React.createElement('button', {type: 'submit'}, 'Hello')
     var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
 
-
 - Several methods are deprecated between React versions, Avoid declaring a deprecated Method.
    ``` // bad
     React.render(<MyComponent />, root);
@@ -218,7 +212,6 @@ and the following react lifecycle methods:
     // good
     ReactDOM.render(<MyComponent />, root);
     import { PropTypes } from 'prop-types';
-
 
 - Ensure that render function returns a value, ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a [callback ref](http://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
     ```// bad
@@ -260,7 +253,6 @@ and the following react lifecycle methods:
       UNSAFE_componentWillUpdate() {}
     }
 
-
 - Avoid passing children to some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`).
     ```// bad
     <br>Children</br>
@@ -278,7 +270,6 @@ and the following react lifecycle methods:
     React.createElement('div', { children: 'Children' })
     React.createElement('div', { dangerouslySetInnerHTML: { __html: 'HTML' } })
 
-
 - Avoid creating React fragment using shorthand syntax, `<>...</>`, otherwise it should be created with `<React.Fragment>...</React.Fragment>`
     ```// bad
     <><Foo /></>
@@ -287,7 +278,7 @@ and the following react lifecycle methods:
     <React.Fragment><Foo /></React.Fragment>
 # Alignment
 - Avoid extra closing tags for components without children 
-    // bad
+    ```// bad
     var HelloJohn = <Hello name="John"></Hello>;
     
     // good
@@ -296,7 +287,6 @@ and the following react lifecycle methods:
     var HelloJohn = <Hello name="John" />;
     var Profile = <Hello name="John"><img src="picture.png" /></Hello>;\
     var HelloSpace = <Hello>{' '}</Hello>;
-
 
 - Enforce the closing bracket location for JSX multiline elements, the closing bracket should be placed **after props**
     ```// good
@@ -311,7 +301,6 @@ and the following react lifecycle methods:
       Hello
     </Say>;
 
-
 - The closing tag location should be on the same line if it is one line expression, while it should be aligned with the opening tag if it is multiline expression.
     ```// bad
     <Hello>
@@ -325,7 +314,6 @@ and the following react lifecycle methods:
       marklar
     </Hello>
     <Hello>marklar</Hello>
-
 
 - Ensure correct position of the first property.
     ```// bad
@@ -353,7 +341,6 @@ and the following react lifecycle methods:
       firstName="John"
       lastName="Smith"
     />
-
 
 - Avoid comment strings (e.g. beginning with `//` or `/*`) from being accidentally injected as a text node in JSX statements.
     ```// bad
@@ -396,7 +383,6 @@ and the following react lifecycle methods:
         return <div className={'foo' /* temp class */}</div>;
       }
     });
-
 
 - Limit every line in JSX to one expression each.
     ```// bad
@@ -444,7 +430,6 @@ and the following react lifecycle methods:
       */}<a>explicit</a>
     </div>
 
-
 - Avoid spaces inside of curly braces in JSX attributes and expressions or around equal signs in JSX attributes.
     ```// bad
     <Hello name={ firstname } />;
@@ -468,7 +453,6 @@ and the following react lifecycle methods:
     <Hello name />;
     <Hello {...props} />;
 
-
 - Enforce consistent indentation style.  `4 spaces`, It applies on components & props
     ```// bad
     <App>
@@ -478,7 +462,6 @@ and the following react lifecycle methods:
     <App>
         <Hello />
     </App>
-
 
 - Avoid multiple spaces between inline JSX props
     ```// bad
@@ -501,7 +484,6 @@ and the following react lifecycle methods:
     <Provider></Provider>
     <Hello firstname="John" />
 
-
 # Props
 - Prevent missing props validation in a React component definition
     ```// bad
@@ -521,7 +503,6 @@ and the following react lifecycle methods:
       },
     });
 
-
 - Enforce consistent usage of destructuring assignment of props, state, and context
     ```// bad
     const MyComponent = (props) => {
@@ -532,7 +513,6 @@ and the following react lifecycle methods:
     const MyComponent = ({id}) => {
       return (<div id={id} />)
     };
-
 
 - Avoid declaring `defaultProp` that has a required `PropType` declaration.
     ```// bad
@@ -552,7 +532,6 @@ and the following react lifecycle methods:
     MyStatelessComponent.defaultProps = {
         bar: 'some default'
     };
-
 
 -  Ensure that any non-required `PropType` declaration of a component has a corresponding `defaultProps` value, One advantage of `defaultProps` over custom default logic in your code is that `defaultProps` are resolved by React before the `PropTypes` typechecking happens, so typechecking will also apply to your `defaultProps`. The same also holds true for stateless functional components: default function parameters do not behave the same as `defaultProps`and thus using `defaultProps` is still preferred.
     ```// bad
@@ -584,7 +563,6 @@ and the following react lifecycle methods:
       name: 'john'
     };
 
-
 - Prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`).
     ```// bad
     <Hello className='foo' />
@@ -593,7 +571,6 @@ and the following react lifecycle methods:
     // good
     <Hello name='Joe' />
     <div className='foo' />```
-
 
 - Avoid using an array index as `key` prop, prefer a stable ID. 
    ``` // bad
@@ -610,7 +587,6 @@ and the following react lifecycle methods:
     Children.forEach(this.props.children, (child, index) => (
       React.cloneElement(child, { key: child.id })
     ))
-
 
 - Prevent passing of children as props,  Children should always be actual children, not passed in as a prop. 
   When using JSX, the children should be nested between the opening and closing tags. When not using JSX, the children should be passed as additional arguments to `React.createElement`.
@@ -634,7 +610,6 @@ and the following react lifecycle methods:
     React.createElement("div", {}, 'Children')
     React.createElement("div", 'Child 1', 'Child 2')
 
-
 - Avoid using children and the dangerouslySetInnerHTML prop at the same time, which will cause problems with children and props.dangerouslySetInnerHTML.
     ```// bad
     <div dangerouslySetInnerHTML={{ __html: "HTML" }}>Children</div>
@@ -653,7 +628,6 @@ and the following react lifecycle methods:
     React.createElement("div", {}, "Children");
     React.createElement("Hello", {}, "Children");
 
-
 - Avoid using characters that you may have meant as JSX escape characters from being accidentally injected as a text node in JSX statements.
     ```// bad
     <div> > </div>
@@ -661,7 +635,6 @@ and the following react lifecycle methods:
     // good
     <div> &gt; </div>
     <div> {'>'} </div>
-
 
 - In JSX all DOM properties and attributes should be camelCased to be consistent with standard JavaScript style. This can be a possible source of error if you are used to writing plain HTML.
     ```// bad
@@ -671,8 +644,6 @@ and the following react lifecycle methods:
     // good
     var React = require('react');
     var Hello = <div className="hello">Hello World</div>;
-    
-
 
 - Avoid using defined a prop type but it is never being used anywhere.
     ```// bad
@@ -695,7 +666,6 @@ and the following react lifecycle methods:
       }
     });
 
-
 - Ensure that the value of the prop `style` be an object or a variable that is an object.
     ```// bad
     <div style="color: 'red'" />
@@ -709,7 +679,6 @@ and the following react lifecycle methods:
     <Hello style={{ color: "red" }} />
     const styles = { color: "red" };
     <div style={styles} />
-
 
 - Avoid passing a boolean attribute in jsx without specifying its value
     ```// bad
@@ -728,7 +697,6 @@ and the following react lifecycle methods:
     <MyComponent onChange={this.handleChange} />
     <MyComponent onChange={this.props.onFoo} />
 
-
 - Avoid passing `bind`  call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) in a JSX prop as it will create a brand new function on every single render. This is bad for performance, as it may cause unnecessary re-renders if a brand new function is passed as a prop to a component that uses reference equality check on the prop to determine if it should update.
     ```// bad
     <Foo onClick={this._handleClick.bind(this)}></Foo>
@@ -737,14 +705,12 @@ and the following react lifecycle methods:
     // good
     <Foo onClick={this._handleClick}></Foo>
 
-
 - Avoid duplicate props which can cause unexpected behaviour in your application.
     ```// bad
     <Hello name="John" name="John" />;
     
     // good
     <Hello firstname="John" lastname="Doe" />;
-
 
 - Avoid Undeclared variables in jsx
     ```// bad
@@ -782,7 +748,6 @@ and the following react lifecycle methods:
       }
     });
 
-
 - When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer noopener'`, however, is a severe security vulnerability ([see here for more details](https://mathiasbynens.github.io/rel-noopener)) This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer noopener'`.
 
 
@@ -796,7 +761,6 @@ and the following react lifecycle methods:
     var Hello = <a target='_blank' href="relative/path/in/the/host"></a>
     var Hello = <a target='_blank' href="/absolute/path/in/the/host"></a>
     var Hello = <a></a>
-
 
 # Ordering
 - When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecycle methods, event handlers, etc.
@@ -815,7 +779,6 @@ and the following react lifecycle methods:
         return <div>Hello</div>;
       }
     });
-
 
 - Sort propTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
     ```// bad
@@ -852,7 +815,6 @@ and the following react lifecycle methods:
     function increment() {
         this.setState(prevState => ({ value: prevState.value + 1}));
     }
-
 
 - Avoid updating the state after a **component mount** or **component update** as it  will trigger a second `render()` call and can lead to property/layout thrashing
     ```// bad
@@ -901,7 +863,6 @@ and the following react lifecycle methods:
       }
     });
 
-
 - NEVER mutate `this.state` directly, as calling `setState()` afterwards may replace the mutation you made. Treat `this.state` as if it were immutable.
     ```// bad
     var Hello = createReactClass({
@@ -944,7 +905,6 @@ and the following react lifecycle methods:
         }
       }
     }
-
 
 - Avoid having shouldComponentUpdate defined when defining a component that extends React.PureComponent. While having shouldComponentUpdate will still work, it becomes pointless to extend PureComponent.
     ```// bad
@@ -1016,8 +976,6 @@ and the following react lifecycle methods:
       }
     }
     
-
-
 - Avoid updating the state during the componentWillUpdate step as it can lead to indeterminate component state and is not allowed.
     ```// bad
     var Hello = createReactClass({
