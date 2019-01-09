@@ -5,14 +5,13 @@ module.exports = {
         /**
          * Enforce boolean attributes notation in JSX
          * When using a boolean attribute in JSX, you can set the attribute value to t
-         * rue or omit the value.This rule will enforce one or the other to 
-         * keep consistency in your code
+         * rue or omit the value.This rule will enforce you to add the boolean value
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
          */
         'react/jsx-boolean-value': ['error', 'always'],
 
         /**
-         * Enforce or disallow spaces inside of curly braces in JSX attributes and expressions.
+         * Disallow spaces inside of curly braces in JSX attributes and expressions.
          * Since React removes extraneous new lines between elements when possible, 
          * it is possible to end up with inline elements that are not rendered with spaces 
          * between them and adjacent text. This is often indicative of an error, 
@@ -22,9 +21,7 @@ module.exports = {
         'react/jsx-child-element-spacing': ['error'],
 
         /**
-         * Enforce the closing bracket location for JSX multiline elements.
-         * This rule checks all JSX multiline elements and verifies the location of the 
-         * closing bracket. By default this one must be aligned with the opening tag.
+         * Enforce the closing bracket location for JSX multiline elements to be after props
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md
          */
         'react/jsx-closing-bracket-location': ['error', 'after-props'],
@@ -39,10 +36,8 @@ module.exports = {
         'react/jsx-closing-tag-location': ['error'],
 
         /**
-         * Enforce or disallow spaces inside of curly braces in JSX attributes and expressions.
-         * This rule aims to maintain consistency around the spacing inside of 
-         * JSX attributes and expressions inside element children. It either requires or 
-         * disallows spaces between those braces and the values inside of them.
+         * Disallow spaces inside of curly braces in JSX attributes and expressions.
+         * never use any spaces inside the curly braces of components, children
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
          */
         'react/jsx-curly-spacing': ['error', {
@@ -54,21 +49,22 @@ module.exports = {
 
         /**
          * Enforce or disallow spaces around equal signs in JSX attributes.
-         * This rule will enforce consistency of spacing around equal signs in JSX attributes, 
-         * by requiring or disallowing one or more spaces before and after =.
+         * never use spaces between '=' operator & value
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md
          */
         'react/jsx-equals-spacing': ['error', 'never'],
 
         /**
-         * Restrict file extensions that may contain JSX
+         * Restrict file extensions that may contain JSX, only use .jsx extensions
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
          */
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx'] }],
 
         /**
          * Configure the position of the first property
-         * This rule checks whether the first property of all JSX elements is correctly placed.
+         * The first property should always be placed on a new line
+         * if the JSX tag takes up multiple lines and there are multiple properties.This is the 
+         * default value.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
          */
         'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
@@ -76,6 +72,7 @@ module.exports = {
         /**
          * Enforce event handler naming conventions in JSX
          * Ensures that any component or prop methods used to handle events are correctly prefixed.
+         * prefix handler with 'handle' & prop with 'on'
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
          */
         'react/jsx-handler-names': ['error', {
@@ -85,7 +82,8 @@ module.exports = {
 
         /**
          * This option validates a specific indentation style for JSX.
-         * This rule is aimed to enforce consistent indentation style.
+         * This rule is aimed to enforce consistent indentation style., 
+         * use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
          */
         'react/jsx-indent': ['error', 4],
@@ -93,6 +91,7 @@ module.exports = {
         /**
          * This option validates a specific indentation style for props.
          * This rule is aimed to enforce consistent indentation style.
+         *  use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
          */
         'react/jsx-indent-props': ['error', 4],
@@ -101,6 +100,7 @@ module.exports = {
          * Detect missing key prop
          * Warn if an element that likely requires a key prop--namely, 
          * one present in an array literal or an arrow function expression.
+         * key must not be array index
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
          */
         'react/jsx-key': ['error'],
@@ -109,6 +109,7 @@ module.exports = {
          * Limit maximum of props on a single line in JSX
          * This rule checks all JSX elements and verifies that the number of props per line 
          * do not exceed the maximum allowed.
+         * maximum is 1 property in multi-line expressions
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
          */
         'react/jsx-max-props-per-line': ['error', {
@@ -141,7 +142,7 @@ module.exports = {
         'react/jsx-no-comment-textnodes': ['error'],
 
         /**
-         * Prevent duplicate properties in JSX
+         * Prevent duplicate properties in JSX with ignoring case
          * Creating JSX elements with duplicate props can cause unexpected behavior 
          * in your application.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
@@ -160,13 +161,13 @@ module.exports = {
         /**
          * Disallow undeclared variables in JSX
          * This rule helps locate potential ReferenceErrors resulting from misspellings or 
-         * missing components.
+         * missing components without allowing globals
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-undef.md
          */
         'react/jsx-no-undef': ['error', { allowGlobals: false }],
 
         /**
-         * One JSX Element Per Line
+         * One JSX Element Per Line, with a single child
          * This option limits every line in JSX to one expression each.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md
          */
@@ -210,7 +211,8 @@ module.exports = {
         'react/jsx-sort-default-props': ['error', { ignoreCase: true }],
 
         /**
-         * Enforce props alphabetical sorting
+         * Enforce props alphabetical sorting, callbacks will be the last, shorthands first
+         * other props will be sorted alphabetically
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
          */
         'react/jsx-sort-props': ['error', {
