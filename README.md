@@ -6,17 +6,17 @@
 
 # Table Of Contents: 
 
-- [Basic-Rules](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:h2=Basic-Rules:)
-- [Class vs React.createClass vs stateless](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=973822221264597970434050&h2=Class-vs-React.createClass-vs-)
-- [Naming](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=794984741373998449709224&h2=Naming)
-- [Declaration](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=292668586888570307045706&h2=Declaration)
-- [Alignment](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=812082536100541806711465&h2=Alignment)
-- [Spacing](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=177141123833834510474446&h2=Spacing)
-- [Props](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=965936235007005291787826&h2=Props)
-- [Refs](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=573950093753830180266922&h2=Refs)
-- [Ordering](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=802981413128701626299838&h2=Ordering)
-- [IsMounted](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=452930627664842628389833&h2=isMounted)
-- [State](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=010154618565779078880056&h2=State)
+- [Basic-Rules](# Basic Rules:)
+- [Class vs React.createClass vs stateless](# Class vs React.createClass vs stateless)
+- [Naming](# Naming)
+- [Declaration](# Declaration)
+- [Alignment](# Alignment)
+- [Spacing](# Spacing)
+- [Props](# Props)
+- [Refs](# Refs)
+- [Ordering](# Ordering)
+- [IsMounted](# isMounted)
+- [State](# State)
 
 
 # Basic Rules:
@@ -273,6 +273,7 @@ and the following react lifecycle methods:
     
     // good
     <React.Fragment><Foo /></React.Fragment>
+
 # Alignment
 - Avoid extra closing tags for components without children 
     ```// bad
