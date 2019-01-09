@@ -18,7 +18,8 @@
 - [IsMounted](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=452930627664842628389833&h2=isMounted)
 - [State](https://paper.dropbox.com/doc/Eslint-React--AVTX~IbhoDxOkUSB_ebWWESUAg-ORAM6YOY2igcEkvfu4Ph2#:uid=010154618565779078880056&h2=State)
 
-**Basic Rules:** 
+
+# Basic Rules:
 
 - Only include one React component per file.
     ```// bad
@@ -41,7 +42,6 @@
           return <Hello name="John" />;
         }
     });
-
 - Always use JSX syntax.
     ```// bad
     // filename: MyComponent.js
