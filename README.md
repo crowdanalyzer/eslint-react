@@ -6,7 +6,7 @@
 
 # [Table of Contents](#table-of-contents)
 
-1. [Basic-Rules](#Basic-Rules)
+1. [Basic Rules](#Basic-Rules)
 2. [Class vs React.createClass vs Stateless](#Class-vs-React.createClass-vs-Stateless)
 3. [Naming](#Naming)
 4. [Declaration](#Declaration)
@@ -23,80 +23,78 @@
 
 1.1 **Only** include **one** React component per file.([no-multi-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md))
     
-   ``` javascript
-   // bad
-    var Hello = createReactClass({
-        render: function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-    });
-    
-    var HelloJohn = createReactClass({
-        render: function () {
-            return <Hello name = "John" / > ;
-        }
-    });
-    
-    // good
-    var Hello = require('./components/Hello');
-    var HelloJohn = createReactClass({
-        render: function() {
-          return <Hello name="John" />;
-        }
-    });
-   ``` 
-  
-  1.2 - **Always** use JSX syntax.([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
-  
-  ``` javascript
-    // bad
-    // filename: MyComponent.js
-    function MyComponent() {
-      return <div />;
+```javascript
+// bad
+var Hello = createReactClass({
+    render: function() {
+      return <div>Hello {this.props.name}</div>;
     }
-    
-    // good
-    // filename: MyComponent.jsx
-    function MyComponent() {
-      return <div />;
+});
+
+var HelloJohn = createReactClass({
+    render: function () {  
+      return <Hello name = "John" / > ;
     }
-  ```
+});
+
+// good
+var Hello = require('./components/Hello');
+var HelloJohn = createReactClass({
+    render: function() {
+      return <Hello name="John" />;
+    }
+});
+``` 
   
-  1.3-  **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
+1.2 **Always** use JSX syntax.([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
+
+```javascript
+// bad
+// filename: MyComponent.js
+function MyComponent() {
+  return <div />;
+}
+
+// good
+// filename: MyComponent.jsx
+function MyComponent() {
+  return <div />;
+}
+```
+
+1.3 **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
 
 ## [Class vs React.createClass vs Stateless](#Class-vs-React.createClass-vs-Stateless)
 
-2.1- **Avoid** using `this` in stateless functional components.([prefer-stateless-function](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md))
+2.1 **Avoid** using `this` in stateless functional components.([prefer-stateless-function](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)). 
+When using a stateless functional component (SFC), props/context aren't accessed in the same way as a class component or the `create-react-class` format. Both props and context are passed as separate arguments to the component instead. Also, as the name suggests, a stateless component does not have state on `this.state`. Attempting to access properties on `this` can be a potential error if someone is unaware of the differences when writing a SFC or missed when converting a class component to a SFC.
+```javascript
+// bad
+function Foo(props) {
+  return (
+    <div>{this.props.bar}</div>
+  );
+}
+function Foo(props) {
+  const { bar } = this.props;
+  return (
+    <div>{bar}</div>
+  );
+}
 
-
-- When using a stateless functional component (SFC), props/context aren't accessed in the same way as a class component or the `create-react-class` format. Both props and context are passed as separate arguments to the component instead. Also, as the name suggests, a stateless component does not have state on `this.state`. Attempting to access properties on `this` can be a potential error if someone is unaware of the differences when writing a SFC or missed when converting a class component to a SFC.
-  ```javascript
-  // bad
-      function Foo(props) {
-        return (
-          <div>{this.props.bar}</div>
-        );
-      }
-      function Foo(props) {
-        const { bar } = this.props;
-        return (
-          <div>{bar}</div>
-        );
-      }
-
-      // good
-      function Foo(props) {
-        return (
-          <div>{props.bar}</div>
-        );
-      }
-      function Foo(props) {
-        const { bar } = props;
-        return (
-          <div>{bar}</div>
-        );
-      }
-  ```
+// good
+function Foo(props) {
+  return (
+    <div>{props.bar}</div>
+  );
+}
+function Foo(props) {
+  const { bar } = props;
+  return (
+    <div>{bar}</div>
+  );
+}
+```
 
 ## [Naming](#Naming)
 
