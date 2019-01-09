@@ -1,8 +1,6 @@
-# Eslint React
+# CrowdAnalyzer React/JSX Style Guide
 
 [![CircleCI](https://circleci.com/gh/crowdanalyzer/eslint-react/tree/master.svg?style=shield&circle-token=cdb93107c5825a69720ea1d1db9aa932490a39b6)](https://circleci.com/gh/crowdanalyzer/eslint-react/tree/master)
-
-# CrowdAnalyzer React/JSX Style Guide
 
 # [Table of Contents](#table-of-contents)
 
@@ -21,7 +19,7 @@
 
 ## [Basic Rules](#Basic-Rules)
 
-1.1 **Only** include **one** React component per file.([no-multi-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md))
+1.1 **Only** include **one** React component per file. ([no-multi-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md))
     
 ```javascript
 // bad
@@ -46,7 +44,7 @@ var HelloJohn = createReactClass({
 });
 ``` 
   
-1.2 **Always** use JSX syntax.([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
+1.2 **Always** use JSX syntax.
 
 ```javascript
 // bad
@@ -66,8 +64,9 @@ function MyComponent() {
 
 ## [Class vs React.createClass vs Stateless](#Class-vs-React.createClass-vs-Stateless)
 
-2.1 **Avoid** using `this` in stateless functional components.([prefer-stateless-function](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)). 
+2.1 **Avoid** using `this` in stateless functional components. ([prefer-stateless-function](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)). 
 When using a stateless functional component (SFC), props/context aren't accessed in the same way as a class component or the `create-react-class` format. Both props and context are passed as separate arguments to the component instead. Also, as the name suggests, a stateless component does not have state on `this.state`. Attempting to access properties on `this` can be a potential error if someone is unaware of the differences when writing a SFC or missed when converting a class component to a SFC.
+
 ```javascript
 // bad
 function Foo(props) {
@@ -98,365 +97,356 @@ function Foo(props) {
 
 ## [Naming](#Naming)
 
-3.1- **Extensions**: Use `.jsx` extension for React components..([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
+3.1 **Extensions**: Use `.jsx` extension for React components. ([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
   
-  ``` javascript
-    // bad
-    // filename: MyComponent.js
-    function MyComponent() {
-      return <div />;
-    }
-    
-    // good
-    // filename: MyComponent.jsx
-    function MyComponent() {
-      return <div />;
-    }
-  ```
+```javascript
+// bad
+// filename: MyComponent.js
+function MyComponent() {
+  return <div />;
+}
 
-3.2-  **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`.([jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md))
+// good
+// filename: MyComponent.jsx
+function MyComponent() {
+  return <div />;
+}
+```
 
-3.3-  **Reference Naming**: Use PascalCase for React components and camelCase for their instances.([jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md))
+3.2 **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`. ([jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md))
+
+3.3 **Reference Naming**: Use PascalCase for React components and camelCase for their instances. ([jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md))
   
-  ```javascript
-     // bad
-    import reservationCard from './ReservationCard';
-    
-    // good
-    import ReservationCard from './ReservationCard';
-    
-    // bad
-    const ReservationItem = <ReservationCard />;
-    
-    // good
-    const reservationItem = <ReservationCard />;
-  ```
+```javascript
+// bad
+import reservationCard from './ReservationCard';
 
-3.4-  **Component Naming**: Use the filename as the component name. For example, `ReservationCard.jsx` should have a reference name of `ReservationCard`. However, for root components of a directory, use `index.jsx` as the filename and use the directory name as the component name:
+// good
+import ReservationCard from './ReservationCard';
 
-  ```javascript
-       // bad
-      import Footer from './Footer/Footer';
+// bad
+const ReservationItem = <ReservationCard />;
 
-      // bad
-      import Footer from './Footer/index';
+// good
+const reservationItem = <ReservationCard />;
+```
 
-      // good
-      import Footer from './Footer';
+3.4 **Component Naming**: Use the filename as the component name. For example, `ReservationCard.jsx` should have a reference name of `ReservationCard`. However, for root components of a directory, use `index.jsx` as the filename and use the directory name as the component name:
 
+```javascript
+// bad
+import Footer from './Footer/Footer';
+
+// bad
+import Footer from './Footer/index';
+
+// good
+import Footer from './Footer';
+```
+
+3.5 **Props Naming**: Avoid using DOM component prop names for different purposes.
+> Why? People expect props like `style` and `className` to mean one specific thing. Varying this API for a subset of your app makes the code less readable and less maintainable, and may cause bugs.
   
-  ```
-3.5- **Props Naming**: Avoid using DOM component prop names for different purposes.
-  > Why? People expect props like `style` and `className` to mean one specific thing. Varying this API for a subset of your app makes the code less readable and less maintainable, and may cause bugs.
-  > 
-  ``` javascript
-      // bad
-    <MyComponent style="fancy" />
-    <MyComponent className="fancy" />
-    
-    // good
-    <MyComponent variant="fancy" />
-  ```
+``` javascript
+// bad
+<MyComponent style="fancy" />
+<MyComponent className="fancy" />
 
-3.6- **Ensure no casing typos** were made declaring static class properties and lifecycle methods.([no-typos](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-typos.md))
+// good
+<MyComponent variant="fancy" />
+```
+
+3.6 **Ensure no casing typos** were made declaring static class properties and lifecycle methods. ([no-typos](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-typos.md))
 
 Checks that declared `propTypes`, `contextTypes` and `childContextTypes` is supported by [react-props](https://github.com/facebook/prop-types), 
 
-It makes sure that the following class properties have no casing typos:
-    `propTypes`, `contextTypes`, `childContextTypes`, `defaultProps`
+It makes sure that the following class properties have no casing typos: `propTypes`, `contextTypes`, `childContextTypes`, `defaultProps`
 
-and the following react lifecycle methods:
-   `getDerivedStateFromProps`, `componentWillMount`, `UNSAFE_componentWillMount`, `componentDidMount`
-    `componentWillReceiveProps`, `UNSAFE_componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`
-    `UNSAFE_componentWillUpdate`, `getSnapshotBeforeUpdate`, `componentDidUpdate`, `componentDidCatch`
-    `componentWillUnmount`, `render`
+and the following react lifecycle methods: `getDerivedStateFromProps`, `componentWillMount`, `UNSAFE_componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `UNSAFE_componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `UNSAFE_componentWillUpdate`, `getSnapshotBeforeUpdate`, `componentDidUpdate`, `componentDidCatch`,`componentWillUnmount`, `render`
   
-  ``` javascript
+``` javascript
+// bad
+class MyComponent extends React.Component {
+  static PropTypes = {}
+}
+class MyComponent extends React.Component {
+  static proptypes = {}
+}
 
-     // bad
-    class MyComponent extends React.Component {
-      static PropTypes = {}
-    }
-    class MyComponent extends React.Component {
-      static proptypes = {}
-    }
-    
-    //good
-    class MyComponent extends React.Component {
-      static propTypes = {}
-    }
-    class MyComponent extends React.Component {
-      static contextTypes = {}
-    }
-  ```
+// good
+class MyComponent extends React.Component {
+  static propTypes = {}
+}
+class MyComponent extends React.Component {
+  static contextTypes = {}
+}
+```
 
 ## [Declaration](#Declaration)
-4.1- While Declaring a Button you have to specify the button type (i.e: one of "button", "submit", and "reset")([button-has-type](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/button-has-type.md))
+4.1 While Declaring a Button you have to specify the button type (i.e: one of "button", "submit", and "reset") ([button-has-type](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/button-has-type.md))
 
 ``` javascript
-  // bad
-    var Hello = <button>Hello</button>
-    var Hello = <button type="foo">Hello</button>
-    var Hello = React.createElement('button', {}, 'Hello')
-    var Hello = React.createElement('button', {type: 'foo'}, 'Hello')
-    
-    // good
-    var Hello = <span>Hello</span>
-    var Hello = <span type="foo">Hello</span>
-    var Hello = <button type="button">Hello</button>
-    var Hello = <button type="submit">Hello</button>
-    var Hello = <button type="reset">Hello</button>
-    var Hello = React.createElement('span', {}, 'Hello')
-    var Hello = React.createElement('span', {type: 'foo'}, 'Hello')
-    var Hello = React.createElement('button', {type: 'button'}, 'Hello')
-    var Hello = React.createElement('button', {type: 'submit'}, 'Hello')
-    var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
+// bad
+var Hello = <button>Hello</button>
+var Hello = <button type="foo">Hello</button>
+var Hello = React.createElement('button', {}, 'Hello')
+var Hello = React.createElement('button', {type: 'foo'}, 'Hello')
+
+// good
+var Hello = <span>Hello</span>
+var Hello = <span type="foo">Hello</span>
+var Hello = <button type="button">Hello</button>
+var Hello = <button type="submit">Hello</button>
+var Hello = <button type="reset">Hello</button>
+var Hello = React.createElement('span', {}, 'Hello')
+var Hello = React.createElement('span', {type: 'foo'}, 'Hello')
+var Hello = React.createElement('button', {type: 'button'}, 'Hello')
+var Hello = React.createElement('button', {type: 'submit'}, 'Hello')
+var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
 ```
   
-  4.2- **Avoid**  declaring a deprecated Method.([no-deprecation](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-deprecated.md))
+4.2 **Avoid** declaring a deprecated Method. ([no-deprecation](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-deprecated.md))
 
 ``` javascript
-      // bad
-        React.render(<MyComponent />, root);
-        React.unmountComponentAtNode(root);
-        React.findDOMNode(this.refs.foo); 
-    
-        // good
-        ReactDOM.render(<MyComponent />, root);
-        import { PropTypes } from 'prop-types';
+// bad
+React.render(<MyComponent />, root);
+React.unmountComponentAtNode(root);
+React.findDOMNode(this.refs.foo); 
 
+// good
+ReactDOM.render(<MyComponent />, root);
+import { PropTypes } from 'prop-types';
 ```
 
-4.3- **Ensure** that render function returns a value([render-return](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md))&([no-render-return-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-render-return-value.md))
+4.3 **Ensure** that render function returns a value ([render-return](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md)) & ([no-render-return-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-render-return-value.md))
 
-ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a [callback ref](http://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+ReactDOM.render() `currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a [callback ref](http://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
   
-  ``` javascript
-     // bad
-    const inst = ReactDOM.render(<App />, document.body);
-    doSomethingWithInst(inst);
-    
-    var Hello = createReactClass({
-      render() {
-        <div>Hello</div>;
-      }
-    });
-    
-    // good
-    ReactDOM.render(<App ref={doSomethingWithInst} />, document.body);
-    ReactDOM.render(<App />, document.body, doSomethingWithInst);
-    class Hello extends React.Component {
-      render() {
-        return <div>Hello</div>;
-      }
-    }
-  ```
-  
-  4.4-  **Avoid** using certain legacy lifecycle methods are [unsafe for use in async React applications](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) and cause warnings in [*strict mode*](https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles). These also happen to be the lifecycles that cause the most [confusion within the React community](https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes).([no-unsafe](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unsafe.md))
-  
-  ``` javascript
-    // bad
-    class Foo extends React.Component {
-      UNSAFE_componentWillMount() {}
-      UNSAFE_componentWillReceiveProps() {}
-      UNSAFE_componentWillUpdate() {}
-    }
-    const Foo = createReactClass({
-      UNSAFE_componentWillMount: function() {},
-      UNSAFE_componentWillReceiveProps: function() {},
-      UNSAFE_componentWillUpdate: function() {}
-    });
-    
-    // good
-    class Foo extends Bar {
-      UNSAFE_componentWillMount() {}
-      UNSAFE_componentWillReceiveProps() {}
-      UNSAFE_componentWillUpdate() {}
-    }
-  
-  ```
-  
-  
-4.5- Avoid passing children to some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`).([void-dom-elements-no-children](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md))
+```javascript
+// bad
+const inst = ReactDOM.render(<App />, document.body);
+doSomethingWithInst(inst);
 
-``` javascript
-    // bad
-    <br>Children</br>
-    <br children='Children' />
-    <br dangerouslySetInnerHTML={{ __html: 'HTML' }} />
-    React.createElement('br', undefined, 'Children')
-    React.createElement('br', { children: 'Children' })
-    React.createElement('br', { dangerouslySetInnerHTML: { __html: 'HTML' } })
-    
-    // good
-    <div>Children</div>
-    <div children='Children' />
-    <div dangerouslySetInnerHTML={{ __html: 'HTML' }} />
-    React.createElement('div', undefined, 'Children')
-    React.createElement('div', { children: 'Children' })
-    React.createElement('div', { dangerouslySetInnerHTML: { __html: 'HTML' } })
+var Hello = createReactClass({
+  render() {
+    <div>Hello</div>;
+  }
+});
+
+// good
+ReactDOM.render(<App ref={doSomethingWithInst} />, document.body);
+ReactDOM.render(<App />, document.body, doSomethingWithInst);
+class Hello extends React.Component {
+  render() {
+    return <div>Hello</div>;
+  }
+}
 ```
   
+4.4 **Avoid** using certain legacy lifecycle methods are [unsafe for use in async React applications](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) and cause warnings in [*strict mode*](https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles). These also happen to be the lifecycles that cause the most [confusion within the React community](https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes). ([no-unsafe](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unsafe.md))
   
-  4.6-  Avoid creating React fragment using shorthand syntax, `<>...</>`, otherwise it should be created with `<React.Fragment>...</React.Fragment>`([jsx-fragments](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-fragments.md))
+```javascript
+// bad
+class Foo extends React.Component {
+  UNSAFE_componentWillMount() {}
+  UNSAFE_componentWillReceiveProps() {}
+  UNSAFE_componentWillUpdate() {}
+}
+const Foo = createReactClass({
+  UNSAFE_componentWillMount: function() {},
+  UNSAFE_componentWillReceiveProps: function() {},
+  UNSAFE_componentWillUpdate: function() {}
+});
 
-``` javascript
-    // bad
-    <><Foo /></>
-    
-    // good
-    <React.Fragment><Foo /></React.Fragment>
+// good
+class Foo extends Bar {
+  UNSAFE_componentWillMount() {}
+  UNSAFE_componentWillReceiveProps() {}
+  UNSAFE_componentWillUpdate() {}
+}  
+```
+
+4.5 Avoid passing children to some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`). ([void-dom-elements-no-children](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md))
+
+```javascript
+// bad
+<br>Children</br>
+<br children='Children' />
+<br dangerouslySetInnerHTML={{ __html: 'HTML' }} />
+React.createElement('br', undefined, 'Children')
+React.createElement('br', { children: 'Children' })
+React.createElement('br', { dangerouslySetInnerHTML: { __html: 'HTML' } })
+
+// good
+<div>Children</div>
+<div children='Children' />
+<div dangerouslySetInnerHTML={{ __html: 'HTML' }} />
+React.createElement('div', undefined, 'Children')
+React.createElement('div', { children: 'Children' })
+React.createElement('div', { dangerouslySetInnerHTML: { __html: 'HTML' } })
+```
+  
+4.6 Avoid creating React fragment using shorthand syntax, `<>...</>`, otherwise it should be created with `<React.Fragment>...</React.Fragment>` ([jsx-fragments](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-fragments.md))
+
+```javascript
+// bad
+<><Foo /></>
+
+// good
+<React.Fragment><Foo /></React.Fragment>
 ```
     
 ## [Alignment](# Alignment)
-5.1-  Avoid extra closing tags for components without children([self-closing-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)) 
+5.1 Avoid extra closing tags for components without children ([self-closing-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)) 
    
-``` javascript
+```javascript
+// bad
 var HelloJohn = <Hello name="John"></Hello>;
     
-    // good
-    var contentContainer = <div className="content"></div>;
-    var intentionalSpace = <div>{' '}</div>;
-    var HelloJohn = <Hello name="John" />;
-    var Profile = <Hello name="John"><img src="picture.png" /></Hello>;\
-    var HelloSpace = <Hello>{' '}</Hello>;
+// good
+var contentContainer = <div className="content"></div>;
+var intentionalSpace = <div>{' '}</div>;
+var HelloJohn = <Hello name="John" />;
+var Profile = <Hello name="John"><img src="picture.png" /></Hello>;\
+var HelloSpace = <Hello>{' '}</Hello>;
 ```
     
-5.2- Enforce the closing bracket location for JSX multiline elements, the closing bracket should be placed **after props**([closing-brackets](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md))
+5.2 Enforce the closing bracket location for JSX multiline elements, the closing bracket should be placed **after props** ([closing-brackets](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md))
 
-  ``` javascript 
-      // good
-    <Hello
-      firstName="John"
-      lastName="Smith" />;
-    
-    <Say
-      firstName="John"
-      lastName="Smith"
-    >
-      Hello
-    </Say>;
+```javascript 
+// good
+<Hello
+  firstName="John"
+  lastName="Smith" />;
+
+<Say
+  firstName="John"
+  lastName="Smith"
+>
+  Hello
+</Say>;
 ```
     
-5.3-  The closing tag location should be on the same line if it is one line expression, while it should be aligned with the opening tag if it is multiline expression.([jsx-closing-tag-location](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-tag-location.md))
+5.3 The closing tag location should be on the same line if it is one line expression, while it should be aligned with the opening tag if it is multiline expression. ([jsx-closing-tag-location](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-tag-location.md))
+
+```javascript 
+// bad
+<Hello>
+  marklar
+  </Hello>
+<Hello>
+  marklar</Hello>
+    
+// good
+<Hello>
+  marklar
+</Hello>
+<Hello>marklar</Hello>
+```
+
+5.4 Ensure correct position of the first property. ([sx-first-prop-new-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md))
+
+```javascript 
+// bad
+<Hello foo={{
+    }}
+    bar />
+    
+// good
+<Hello foo={{
+}} />
+<Hello
+    foo={{
+    }}
+    bar
+/>
+```
+
+5.5 Limit the maximum of props on a single line can improve readability, If it is multiline expression, then it’s one property per line ([sx-max-props-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md))
 
   ``` javascript 
 // bad
-    <Hello>
-      marklar
-      </Hello>
-    <Hello>
-      marklar</Hello>
+<Hello 
+  firstName="John" lastName="Smith" />
     
-    // good
-    <Hello>
-      marklar
-    </Hello>
-    <Hello>marklar</Hello>
+// good
+<Hello firstName="John" lastName="Smith" />
+<Hello
+  firstName="John"
+  lastName="Smith"
+/>
 ```
 
-5.4- Ensure correct position of the first property.([sx-first-prop-new-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md))
+5.6 Avoid comment strings (e.g. beginning with `//` or `/*`) from being accidentally injected as a text node in JSX statements. ([jsx-no-comment-textnodes](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-comment-textnodes.md))
 
-  ``` javascript 
+```javascript 
 // bad
-    <Hello foo={{
-        }}
-        bar />
-    
-    // good
-    <Hello foo={{
-    }} />
-    <Hello
-        foo={{
-        }}
-        bar
-    />
+var Hello = createReactClass({
+  render: function() {
+    return (
+      <div>// empty div</div>
+    );
+  }
+});
+
+var Hello = createReactClass({
+  render: function() {
+    return (
+      <div>
+        /* empty div */
+      </div>
+    );
+  }
+});
+
+// good
+var Hello = createReactClass({
+  displayName: 'Hello',
+  render: function() {
+    return <div>{/* empty div */}</div>;
+  }
+});
+
+var Hello = createReactClass({
+  displayName: 'Hello',
+  render: function() {
+    return <div /* empty div */></div>;
+  }
+});
+
+var Hello = createReactClass({
+  displayName: 'Hello',
+  render: function() {
+    return <div className={'foo' /* temp class */}</div>;
+  }
+});
 ```
-
-5.5 - Limit the maximum of props on a single line can improve readability, If it is multiline expression, then it’s one property per line([sx-max-props-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md))
-
-  ``` javascript 
-// bad
-    <Hello firstName="John" lastName="Smith" />
-    
-    // good
-    <Hello firstName="John" lastName="Smith" />
-    <Hello
-      firstName="John"
-      lastName="Smith"
-    />
-```
-
-5.6 - Avoid comment strings (e.g. beginning with `//` or `/*`) from being accidentally injected as a text node in JSX statements.([jsx-no-comment-textnodes](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-comment-textnodes.md))
-
-  ``` javascript 
-// bad
-    var Hello = createReactClass({
-      render: function() {
-        return (
-          <div>// empty div</div>
-        );
-      }
-    });
-    
-    var Hello = createReactClass({
-      render: function() {
-        return (
-          <div>
-            /* empty div */
-          </div>
-        );
-      }
-    });
-    
-    // good
-    var Hello = createReactClass({
-      displayName: 'Hello',
-      render: function() {
-        return <div>{/* empty div */}</div>;
-      }
-    });
-    
-    var Hello = createReactClass({
-      displayName: 'Hello',
-      render: function() {
-        return <div /* empty div */></div>;
-      }
-    });
-    
-    var Hello = createReactClass({
-      displayName: 'Hello',
-      render: function() {
-        return <div className={'foo' /* temp class */}</div>;
-      }
-    });
-```
-5.7-  Limit every line in JSX to one expression each.([jsx-one-expression-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md))
+5.7 Limit every line in JSX to one expression each. ([jsx-one-expression-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md))
    
-   ``` javascript 
+```javascript 
 // bad
-    <App><Hello /></App>
-    <App><Hello />
-    </App>
-    
-    // good
-    <App>Hello</App>
-    <App>{"Hello"}</App>
-    <App><Hello /></App>
+<App><Hello /></App>
+<App><Hello />
+</App>
 
-    />
+// good
+<App>Hello</App>
+<App>{"Hello"}</App>
+<App>
+  <Hello />
+</App>
 ```
 
-5.8 - Avoid unnecessary curly braces in JSX props and / or children.([jsx-curly-brace-presence](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md))
+5.8 Avoid unnecessary curly braces in JSX props and / or children. ([jsx-curly-brace-presence](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md))
 
 ```javascript
-   // bad
-    <App>{'Hello world'}</App>;
-    <App prop={'Hello world'} attr={"foo"} />;
-    
-    // good
-    <App>Hello world</App>;
-    <App prop="Hello world" attr="foo" />;
+// bad
+<App>{'Hello world'}</App>;
+<App prop={'Hello world'} attr={"foo"} />;
+
+// good
+<App>Hello world</App>;
+<App prop="Hello world" attr="foo" />;
 ```
 
 ## [Spacing](#Spacing)
