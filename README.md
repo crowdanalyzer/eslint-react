@@ -5,7 +5,7 @@
 # [Table of Contents](#table-of-contents)
 
 1. [Basic Rules](#Basic-Rules)
-2. [Classes-vs-Stateless](#Classes-vs-Stateless)
+2. [Classes vs Stateless](#Classes-vs-Stateless)
 3. [Naming](#Naming)
 4. [Alignment](#Alignment)
 5. [Spacing](#Spacing)
@@ -46,7 +46,9 @@ var HelloJohn = createReactClass({
 
 1.3 **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
 
-## [Classes-vs-Stateless](#Classes-vs-Stateless)
+**[Back to Top](#table-of-contents)**
+
+## [Classes vs Stateless](#Classes-vs-Stateless)
 
 2.1 If you have internal state and/or refs, prefer **class** extends **React.Component** over **React.createClass**. if you don't have state or refs, prefer **normal functions** (not arrow functions) over **classes** ([prefer-es6-class](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md)) & ([prefer-stateless-function](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md))
 
