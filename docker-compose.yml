@@ -4,8 +4,12 @@ services:
     tty: true
     stdin_open: true
     container_name: eslint-react
+    env_file:
+      - ./.env
     build:
       context: .
+      args:
+        - NPM_TOKEN
     volumes:
       - .:/var/code:rw
     entrypoint: './startup.sh'

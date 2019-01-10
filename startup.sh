@@ -1,5 +1,8 @@
 #!/bin/bash
-  
+
+echo "Copying .npmrc-example into .npmrc"
+cp /var/code/.npmrc-example /var/code/.npmrc
+
 echo "Removing node_modules"
 rm -r node_modules
   
