@@ -33,6 +33,14 @@ jobs:
           name: Running lint
           command: npm run lint
 
+  depcheck:
+    <<: *images
+    steps:
+      - *attach_workdir
+      - run:
+          name: Checking unused and outdated packages
+          command: npm run depcheck
+
   publish:
     <<: *images
     steps:
@@ -51,10 +59,15 @@ workflows:
           context: npm
           requires:
             - setup
+      - depcheck:
+          context: npm
+          requires:
+            - setup
       - publish:
           context: npm
           requires:
             - lint
+            - depcheck
           filters:
             branches:
               only: master
