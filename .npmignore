@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Except
+!rules/**
+!index.js
+!package.json
+!README.md
