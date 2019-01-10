@@ -4,6 +4,8 @@ services:
     tty: true
     stdin_open: true
     container_name: eslint-react
+    env_file:
+      - ./.env
     build:
       context: .
       args:
