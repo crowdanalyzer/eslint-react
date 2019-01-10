@@ -2,7 +2,7 @@
 *
 
 # Except
-!src/**
+!rules/**
 !index.js
 !package.json
 !README.md
