@@ -6,6 +6,8 @@ services:
     container_name: eslint-react
     build:
       context: .
+      args:
+        - NPM_TOKEN
     volumes:
       - .:/var/code:rw
     entrypoint: './startup.sh'
