@@ -269,18 +269,6 @@ module.exports = {
         }],
 
         /**
-         * This rule checks all components and verifies that all propTypes declarations are 
-         * sorted alphabetically. A spread attribute resets the verification. 
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md
-         */
-        'react/sort-prop-types': ['error', {
-            ignoreCase: true,
-            requiredFirst: true,
-            sortShapeProp: true,
-            callbacksLast: true,
-        }],
-
-        /**
          * Require that the value of the prop style be an object or a variable that is an object.
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
          */

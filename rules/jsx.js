@@ -206,26 +206,6 @@ module.exports = {
         'react/jsx-props-no-multi-spaces': ['error'],
 
         /**
-         * Enforce defaultProps declarations alphabetical sorting
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-default-props.md
-         */
-        'react/jsx-sort-default-props': ['error', { ignoreCase: true }],
-
-        /**
-         * Enforce props alphabetical sorting, callbacks will be the last, shorthands first
-         * other props will be sorted alphabetically
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
-         */
-        'react/jsx-sort-props': ['error', {
-            callbacksLast: true,
-            shorthandFirst: true,
-            ignoreCase: true,
-            reservedFirst: [
-                'key', 'dangerouslySetInnerHTML', 'ref', 'children',
-            ],
-        }],
-
-        /**
          * Validate whitespace in and around the JSX opening and closing brackets
          * Enforce or forbid spaces after the opening bracket, before the closing bracket, 
          * before the closing bracket of self - closing elements, and between the angle 
