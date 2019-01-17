@@ -10,15 +10,6 @@ module.exports = {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/button-has-type.md
         */
         'react/button-has-type': ['error', { button: true, submit: true, reset: true }],
-
-        /**
-         * This rule aims to ensure that any defaultProp has a non-required PropType declaration.
-         * Having defaultProps for non-existent propTypes is likely the result of errors in 
-         * refactoring or a sign of a missing propType. Having a defaultProp for a required 
-         * property similarly indicates a possible refactoring problem.
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/default-props-match-prop-types.md
-         */
-        'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: false }],
         
         /**
          * Enforce consistent usage of destructuring assignment of props, state, and context
@@ -227,13 +218,6 @@ module.exports = {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
          */
         'react/prop-types': ['error'],
-
-        /**
-         * This rule aims to ensure that any non-required PropType declaration of a 
-         * component has a corresponding defaultProps value.
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
-         */
-        'react/require-default-props': ['error', { forbidDefaultForRequired: true }],
 
         /**
          * When writing the render method in a component it is easy to forget to return 

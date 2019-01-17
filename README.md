@@ -372,61 +372,7 @@ const MyComponent = ({id}) => {
 };
 ```
 
-6.3 Avoid declaring `defaultProp` that has a required `PropType` declaration. ([default-props-match-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/default-props-match-prop-types.md))
-
-``` javascript
-// bad
-MyStatelessComponent.propTypes = {
-  foo: React.PropTypes.string.isRequired,
-  bar: React.PropTypes.string
-};
-MyStatelessComponent.defaultProps = {
-  foo: "foo"
-};
-
-// good
-MyStatelessComponent.propTypes = {
-  foo: React.PropTypes.string.isRequired,
-  bar: React.PropTypes.string
-};
-MyStatelessComponent.defaultProps = {
-  bar: 'some default'
-};
-```
-
-6.4 Ensure that any non-required `PropType` declaration of a component has a corresponding `defaultProps` value, One advantage of `defaultProps` over custom default logic in your code is that `defaultProps` are resolved by React before the `PropTypes` typechecking happens, so typechecking will also apply to your `defaultProps`. The same also holds true for stateless functional components: default function parameters do not behave the same as `defaultProps`and thus using `defaultProps` is still preferred. ([require-default-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md))
-    
-```javascript
-// bad
-const HelloWorld = ({ name = { first: 'John', last: 'Doe' }) => (
-  <h1>Hello, {name.first} {name.last}!</h1>
-);
-
-HelloWorld.propTypes = {
-  name: PropTypes.shape({
-    first: PropTypes.string,
-    last: PropTypes.string,
-  })
-};
-
-// good
-const HelloWorld = ({ name }) => (
-  <h1>Hello, {name.first} {name.last}!</h1>
-);
-
-HelloWorld.propTypes = {
-  name: PropTypes.shape({
-    first: PropTypes.string,
-    last: PropTypes.string,
-  })
-};
-
-HelloWorld.defaultProps = {
-  name: { first: 'John', last: 'Doe' }
-};
-```
-
-6.5 Prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). ([forbid-component-props]( https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md))
+6.3 Prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). ([forbid-component-props]( https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md))
    
 ```javascript
 // bad
@@ -438,7 +384,7 @@ HelloWorld.defaultProps = {
 <div className='foo' />
 ```
 
-6.6 Avoid using an array index as `key` prop, prefer a stable ID. ([no-array-index-key](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md))
+6.4 Avoid using an array index as `key` prop, prefer a stable ID. ([no-array-index-key](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md))
 
 ```javascript
 // bad
@@ -458,7 +404,7 @@ Children.forEach(this.props.children, (child, index) => (
 ))
 ```
 
-6.7 Prevent passing of children as props,  Children should always be actual children, not passed in as a prop. 
+6.5 Prevent passing of children as props,  Children should always be actual children, not passed in as a prop. 
 When using JSX, the children should be nested between the opening and closing tags. When not using JSX, the children should be passed as additional arguments to `React.createElement`. ([no-children-prop](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-children-prop.md))
 
 ```javascript
@@ -483,7 +429,7 @@ React.createElement("div", {}, 'Children')
 React.createElement("div", 'Child 1', 'Child 2')
 ```
 
-6.8 Ensure that the value of the prop `style` be an object or a variable that is an object. ([style-prop-object](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md))
+6.6 Ensure that the value of the prop `style` be an object or a variable that is an object. ([style-prop-object](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md))
   
 ```javascript
 // bad
@@ -500,7 +446,7 @@ const styles = { color: "red" };
 <div style={styles} />
 ```
 
-6.9 Avoid passing a boolean attribute in jsx without specifying its value. ([jsx-boolean-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md))
+6.7 Avoid passing a boolean attribute in jsx without specifying its value. ([jsx-boolean-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md))
    
 ```javascript
 // bad
@@ -510,7 +456,7 @@ var Hello = <Hello personal />;
 var Hello = <Hello personal={true} />;
 ```
 
-6.10 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
+6.8 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
    
 ```javascript
 // bad
@@ -522,7 +468,7 @@ var Hello = <Hello personal={true} />;
 <MyComponent onChange={this.props.onFoo} />
 ```
 
-6.11 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
+6.9 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
  
 ```javascript
 // bad
