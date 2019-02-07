@@ -19,6 +19,14 @@ module.exports = {
         'react/destructuring-assignment': ['error', 'always'],
 
         /**
+         * Prevent missing displayName in a React component definition
+         * DisplayName allows you to name your component.This name is used by 
+         * React in debugging messages.
+         * https: //github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
+         */
+        'react/display-name': ['error', { ignoreTranspilerName: true }],
+
+        /**
          * By default this rule prevents passing of props that add lots of complexity 
          * (className, style) to Components. This rule only applies to Components (e.g. <Foo />) 
          * and not DOM nodes (e.g. <div />). The list of forbidden props can be customized 
@@ -177,12 +185,6 @@ module.exports = {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unsafe.md
          */
         'react/no-unsafe': ['error'],
-
-        /**
-         * Warns you if you have defined a prop type but it is never being used anywhere.
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
-         */
-        'react/no-unused-prop-types': ['error', { skipShapeProps: true }],
 
         /**
          * Warns you if you have defined a property on the state, but it is not being used anywhere.
