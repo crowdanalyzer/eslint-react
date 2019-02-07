@@ -24,7 +24,7 @@ module.exports = {
          * React in debugging messages.
          * https: //github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
          */
-        "react/display-name": ['error', { ignoreTranspilerName: true }],
+        'react/display-name': ['error', { ignoreTranspilerName: true }],
 
         /**
          * By default this rule prevents passing of props that add lots of complexity 
