@@ -247,7 +247,7 @@ module.exports = {
                 'lifecycle',
                 'static-methods',
                 'everything-else',
-                'render'
+                'render',
             ],
             groups: {
                 lifecycle: [
@@ -274,9 +274,9 @@ module.exports = {
                     'getSnapshotBeforeUpdate',
                     'componentDidUpdate',
                     'componentDidCatch',
-                    'componentWillUnmount'
-                ]
-            }
+                    'componentWillUnmount',
+                ],
+            },
         }],
 
         /**
