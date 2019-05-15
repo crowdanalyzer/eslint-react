@@ -571,7 +571,7 @@ var Hello = createReactClass({
 ```javascript
 // bad 
 function increment() {
-  sthis.setState({value: this.state.value + 1});
+  this.setState({value: this.state.value + 1});
 }
 
 // good
