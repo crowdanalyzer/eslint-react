@@ -24,7 +24,7 @@ module.exports = {
          * React in debugging messages.
          * https: //github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
          */
-        'react/display-name': ['error', { ignoreTranspilerName: true }],
+        'react/display-name': ['error', { ignoreTranspilerName: false }],
 
         /**
          * By default this rule prevents passing of props that add lots of complexity 
@@ -243,15 +243,40 @@ module.exports = {
          */
         'react/sort-comp': ['error', {
             order: [
-                'static-methods',
-                'setters',
-                'getters',
-                'instance-variables',
-                'instance-methods',
-                'everything-else',
+                'constructor',
                 'lifecycle',
-                'render',
+                'static-methods',
+                'everything-else',
+                'render'
             ],
+            groups: {
+                lifecycle: [
+                    'displayName',
+                    'propTypes',
+                    'contextTypes',
+                    'childContextTypes',
+                    'mixins',
+                    'statics',
+                    'defaultProps',
+                    'getDefaultProps',
+                    'state',
+                    'getInitialState',
+                    'getChildContext',
+                    'getDerivedStateFromProps',
+                    'componentWillMount',
+                    'UNSAFE_componentWillMount',
+                    'componentDidMount',
+                    'componentWillReceiveProps',
+                    'UNSAFE_componentWillReceiveProps',
+                    'shouldComponentUpdate',
+                    'componentWillUpdate',
+                    'UNSAFE_componentWillUpdate',
+                    'getSnapshotBeforeUpdate',
+                    'componentDidUpdate',
+                    'componentDidCatch',
+                    'componentWillUnmount'
+                ]
+            }
         }],
 
         /**
