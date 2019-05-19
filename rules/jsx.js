@@ -79,7 +79,7 @@ module.exports = {
          * use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
          */
-        'react/jsx-indent': ['error', 2],
+        'react/jsx-indent': ['error', 4],
 
         /**
          * This option validates a specific indentation style for props.
@@ -87,7 +87,7 @@ module.exports = {
          * use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
          */
-        'react/jsx-indent-props': ['error', 2],
+        'react/jsx-indent-props': ['error', 4],
 
         /**
          * Detect missing key prop
