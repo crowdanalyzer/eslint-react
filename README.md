@@ -46,28 +46,31 @@ var HelloJohn = createReactClass({
 
 1.3 **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
 
-1.4 **Always** use a displayName for components when exporting them so they can be easily identified in react dev tools 
+1.4 **Always** use a displayName for components when exporting them so they can be easily identified in react dev tools. this can be easily done by the transpiler as long you export the component correctly. see examples below 
+
 ```javascript
-// Bad
+// bad
 export default () => {
   return <button />;
 }
-// Good
+
+// good
 // Named export (declaration)
 export function Button() {
   return <button />;
 }
 
-//Named export (arrow)
+// Named export (arrow)
 export const Button = () => {
   return <button />;
 }
 
-//Default export (declaration)
+// Default export (declaration)
 export default function Button() {
   return <button />;
 }
 
+// Default export (arrow)
 const Button = () => {
   return <button />;
 }
@@ -473,7 +476,7 @@ const styles = { color: "red" };
 <div style={styles} />
 ```
 
-6.8 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
+6.7 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
    
 ```javascript
 // bad
@@ -485,7 +488,7 @@ const styles = { color: "red" };
 <MyComponent onChange={this.props.onFoo} />
 ```
 
-6.9 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
+6.8 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
  
 ```javascript
 // bad

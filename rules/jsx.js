@@ -4,14 +4,6 @@
 module.exports = {
     rules: {
         /**
-         * Enforce boolean attributes notation in JSX
-         * When using a boolean attribute in JSX, you can set the attribute value to
-         * true or omit the value.This rule will enforce you to add the boolean value
-         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
-         */
-        'react/jsx-boolean-value': ['error', 'always'],
-
-        /**
          * Disallow spaces inside of curly braces in JSX attributes and expressions.
          * Since React removes extraneous new lines between elements when possible, 
          * it is possible to end up with inline elements that are not rendered with spaces 
@@ -87,7 +79,7 @@ module.exports = {
          * use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
          */
-        'react/jsx-indent': ['error', 4],
+        'react/jsx-indent': ['error', 2],
 
         /**
          * This option validates a specific indentation style for props.
@@ -95,7 +87,7 @@ module.exports = {
          * use 4 spaces for indentation
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
          */
-        'react/jsx-indent-props': ['error', 4],
+        'react/jsx-indent-props': ['error', 2],
 
         /**
          * Detect missing key prop
@@ -187,7 +179,7 @@ module.exports = {
          * <React.Fragment>...</React.Fragment>
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-fragments.md
          */
-        'react/jsx-fragments': ['error', 'element'],
+        'react/jsx-fragments': ['error', 'syntax'],
 
         /**
          * Enforce PascalCase for user-defined JSX components.
