@@ -324,18 +324,33 @@ var x = function() {
 <Hello {...props} />;
 ```
     
-5.3 Enforce consistent indentation style. `4 spaces`, It applies on components & props.([jsx-indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md)) & ([jsx-indent-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md))
+5.3 Enforce consistent indentation style. `2 spaces`.([jsx-indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md)) & ([jsx-indent-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md)) & ([indent](https://eslint.org/docs/rules/indent))
     
 ``` javascript
+// bad
+<App>
+    <Hello />
+</App>
+
 // bad
 <App>
 <Hello />
 </App>
 
+// bad
+{
+      hello: "world"
+}
+
 // good
 <App>
-    <Hello />
+  <Hello />
 </App>
+
+// good
+{
+  hello: "world"
+}
 ```
 
 5.4 Avoid multiple spaces between inline JSX props. ([jsx-props-no-multi-spaces](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md))
