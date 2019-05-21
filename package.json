@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-crowdanalyzer-react",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "license": "UNLICENSED",
   "author": "CrowdAnalyzer <dev@crowdanalyzer.com>",
   "description": "Crowd Analyzer eslint react configuration",
@@ -16,17 +16,21 @@
     {
       "name": "Maha Zaid <MahaZaid>",
       "email": "maha.raafat@crowdanalyzer.com"
+    },
+    {
+      "name": "Ali Hassan <AliHassan0>",
+      "email": "ali.hassan@crowdanalyzer.com"
     }
   ],
   "main": "./index",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint .",
-    "depcheck": "./node_modules/.bin/npm-check --ignore npm-check",
+    "lint": "eslint .",
+    "depcheck": "npm-check",
     "docker": "docker-compose build --no-cache && docker-compose run node"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "5.13.0",
+    "eslint": "^5.16.0",
     "eslint-config-crowdanalyzer": "^1.4.1",
     "eslint-plugin-react": "^7.12.4",
     "npm-check": "^5.9.0"

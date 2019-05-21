@@ -46,6 +46,36 @@ var HelloJohn = createReactClass({
 
 1.3 **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
 
+1.4 **Always** use a displayName for components when exporting them so they can be easily identified in react dev tools. this can be easily done by the transpiler as long you export the component correctly. see examples below 
+
+```javascript
+// bad
+export default () => {
+  return <button />;
+}
+
+// good
+// Named export (declaration)
+export function Button() {
+  return <button />;
+}
+
+// Named export (arrow)
+export const Button = () => {
+  return <button />;
+}
+
+// Default export (declaration)
+export default function Button() {
+  return <button />;
+}
+
+// Default export (arrow)
+const Button = () => {
+  return <button />;
+}
+export default Button;
+```
 **[Back to Top](#table-of-contents)**
 
 ## [Classes vs Stateless](#Classes-vs-Stateless)
@@ -294,18 +324,33 @@ var x = function() {
 <Hello {...props} />;
 ```
     
-5.3 Enforce consistent indentation style. `4 spaces`, It applies on components & props.([jsx-indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md)) & ([jsx-indent-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md))
+5.3 Enforce consistent indentation style. `2 spaces`.([jsx-indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md)) & ([jsx-indent-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md)) & ([indent](https://eslint.org/docs/rules/indent))
     
 ``` javascript
+// bad
+<App>
+    <Hello />
+</App>
+
 // bad
 <App>
 <Hello />
 </App>
 
+// bad
+{
+      hello: "world"
+}
+
 // good
 <App>
-    <Hello />
+  <Hello />
 </App>
+
+// good
+{
+  hello: "world"
+}
 ```
 
 5.4 Avoid multiple spaces between inline JSX props. ([jsx-props-no-multi-spaces](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md))
@@ -446,17 +491,7 @@ const styles = { color: "red" };
 <div style={styles} />
 ```
 
-6.7 Avoid passing a boolean attribute in jsx without specifying its value. ([jsx-boolean-value](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md))
-   
-```javascript
-// bad
-var Hello = <Hello personal />;
-
-// good
-var Hello = <Hello personal={true} />;
-```
-
-6.8 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
+6.7 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
    
 ```javascript
 // bad
@@ -468,7 +503,7 @@ var Hello = <Hello personal={true} />;
 <MyComponent onChange={this.props.onFoo} />
 ```
 
-6.9 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
+6.8 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
  
 ```javascript
 // bad
@@ -522,7 +557,12 @@ var Hello = <a></a>
 
 ## [Ordering](#Ordering)
 8.1 When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecycle methods, event handlers, etc. ([sort-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md))
-   
+The current Recommended Order For class components
+  1- Constructor
+  2- life cycle Methods e.g., componentDidMount, etc.
+  3- Static Methods e.g., handleSubmit, etc.
+  4- render function   
+
 ```javascript
 // bad
 var Hello = createReactClass({
@@ -549,7 +589,7 @@ var Hello = createReactClass({
 ```javascript
 // bad 
 function increment() {
-  sthis.setState({value: this.state.value + 1});
+  this.setState({value: this.state.value + 1});
 }
 
 // good

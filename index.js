@@ -2,27 +2,27 @@
 'use strict';
 
 module.exports = {
-    extends: [
-        './rules/jsx',
-        './rules/react',
-        './rules/stylistic-issues',
-    ].map(require.resolve),
+  extends: [
+    './rules/jsx',
+    './rules/react',
+    './rules/stylistic-issues',
+  ].map(require.resolve),
 
-    parserOptions: {
-        ecmaVersion: 8,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
-        },
+  parserOptions: {
+    ecmaVersion: 8,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
     },
+  },
 
-    parser: 'babel-eslint',
+  parser: 'babel-eslint',
 
-    plugins: ['react'],
+  plugins: ['react'],
 
-    env: {
-        node: true,
-        es6: true,
-        mocha: true,
-    },
+  env: {
+    node: true,
+    es6: true,
+    mocha: true,
+  },
 };
