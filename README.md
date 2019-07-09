@@ -18,7 +18,7 @@
 ## [Basic Rules](#Basic-Rules)
 
 1.1 **Only** include **one** React component per file. ([no-multi-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md))
-    
+
 ```javascript
 // bad
 var Hello = createReactClass({
@@ -28,8 +28,8 @@ var Hello = createReactClass({
 });
 
 var HelloJohn = createReactClass({
-  render: function () {  
-    return <Hello name = "John" /> ;
+  render: function() {
+    return <Hello name="John" />;
   }
 });
 
@@ -40,13 +40,13 @@ var HelloJohn = createReactClass({
     return <Hello name="John" />;
   }
 });
-``` 
+```
 
 1.2 **Always** use JSX syntax.
 
 1.3 **Do not** use `React.createElement` unless you’re initializing the app from a file that is not JSX.
 
-1.4 **Always** use a displayName for components when exporting them so they can be easily identified in react dev tools. this can be easily done by the transpiler as long you export the component correctly. see examples below 
+1.4 **Always** use a displayName for components when exporting them so they can be easily identified in react dev tools. this can be easily done by the transpiler as long you export the component correctly. see examples below
 
 ```javascript
 // bad
@@ -76,6 +76,7 @@ const Button = () => {
 }
 export default Button;
 ```
+
 **[Back to Top](#table-of-contents)**
 
 ## [Classes vs Stateless](#Classes-vs-Stateless)
@@ -90,9 +91,7 @@ const Listing = React.createClass({
   }
 });
 
-const Listing = ({ hello }) => (
-  <div>{hello}</div>
-);
+const Listing = ({ hello }) => <div>{hello}</div>;
 
 // good
 class Listing extends React.Component {
@@ -110,8 +109,8 @@ function Listing({ hello }) {
 
 ## [Naming](#Naming)
 
-3.1 **Extensions**: Use `.jsx` extension for React components. ([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
-  
+3.1 **Extensions**: Use `.jsx` extension for React components. If you use Typescript, you can't use but `.tsx` extension by default. ([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
+
 ```javascript
 // bad
 // filename: MyComponent.js
@@ -124,12 +123,18 @@ function MyComponent() {
 function MyComponent() {
   return <div />;
 }
+
+// good
+// filename: MyComponent.tsx
+const MyComponent: React.FC = () => {
+  return <div />;
+};
 ```
 
 3.2 **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`. ([jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md))
 
 3.3 **Reference Naming**: Use PascalCase for React components and camelCase for their instances. ([jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md))
-  
+
 ```javascript
 // bad
 import reservationCard from './ReservationCard';
@@ -152,57 +157,57 @@ import Footer from './Footer';
 ```
 
 **[Back to Top](#table-of-contents)**
-    
+
 ## [Alignment](#Alignment)
-4.1 Avoid extra closing tags for components without children ([self-closing-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)) 
-   
+
+4.1 Avoid extra closing tags for components without children ([self-closing-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md))
+
 ```javascript
 // bad
-var HelloJohn = <Hello name="John"></Hello>;
-    
-// good
-var contentContainer = <div className="content"></div>;
-var intentionalSpace = <div>{' '}</div>;
 var HelloJohn = <Hello name="John" />;
-var Profile = <Hello name="John"><img src="picture.png" /></Hello>;
-var HelloSpace = <Hello>{' '}</Hello>;
+
+// good
+var contentContainer = <div className="content" />;
+var intentionalSpace = <div> </div>;
+var HelloJohn = <Hello name="John" />;
+var Profile = (
+  <Hello name="John">
+    <img src="picture.png" />
+  </Hello>
+);
+var HelloSpace = <Hello> </Hello>;
 ```
 
 4.2 Enforce the closing bracket location for JSX multiline elements, the closing bracket should be placed **after props** ([closing-bracket-location](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md))
 
-```javascript 
-// bad 
+```javascript
+// bad
 var x = function() {
-  return <Say
-    firstName="John"
-    lastName="Smith"
-         >
-    Hello
-         </Say>;
+  return (
+    <Say firstName="John" lastName="Smith">
+      Hello
+    </Say>
+  );
 };
 
 // good
-<Hello
-  firstName="John"
-  lastName="Smith" />;
+<Hello firstName="John" lastName="Smith" />;
 
-<Say
-  firstName="John"
-  lastName="Smith">
+<Say firstName="John" lastName="Smith">
   Hello
 </Say>;
 ```
-    
+
 4.3 The closing tag location should be on the same line if it is one line expression, while it should be aligned with the opening tag if it is multiline expression. ([jsx-closing-tag-location](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-tag-location.md))
 
-```javascript 
+```javascript
 // bad
 <Hello>
   marklar
   </Hello>
 <Hello>
   marklar</Hello>
-    
+
 // good
 <Hello>
   marklar
@@ -212,12 +217,12 @@ var x = function() {
 
 4.4 Ensure correct position of the first property. ([jsx-first-prop-new-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md))
 
-```javascript 
+```javascript
 // bad
 <Hello foo={{
     }}
     bar />
-    
+
 // good
 <Hello foo={{}} />
 <Hello
@@ -228,22 +233,22 @@ var x = function() {
 
 4.5 Limit the maximum of props on a single line can improve readability, If it is multiline expression, then it’s one property per line ([jsx-max-props-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md))
 
-  ``` javascript 
+```javascript
 // bad
-<Hello 
-  firstName="John" lastName="Smith" />
-    
+<Hello
+firstName="John" lastName="Smith" />
+
 // good
 <Hello firstName="John" lastName="Smith" />
 <Hello
-  firstName="John"
-  lastName="Smith"
+firstName="John"
+lastName="Smith"
 />
 ```
 
 4.6 Limit every line in JSX to one expression each. ([jsx-one-expression-per-line](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md))
-   
-```javascript 
+
+```javascript
 // bad
 <App><Hello /><Hello2 /></App>
 
@@ -261,7 +266,7 @@ var x = function() {
 ```javascript
 // bad
 <App>{'Hello world'}</App>;
-<App prop={'Hello world'} attr={"foo"} />;
+<App prop={'Hello world'} attr={'foo'} />;
 
 // good
 <App>Hello world</App>;
@@ -274,7 +279,7 @@ var x = function() {
 
 5.1 Avoid using extra spaces, React removes extraneous new lines between elements when possible, it is possible to end up with inline elements that are not rendered with spaces between them and adjacent text. This is often indicative of an error, so this rule attempts to detect.([jsx-child-element-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-child-element-spacing.md))
 
-``` javascript
+```javascript
 // bad
 <div>
   Here is a
@@ -299,34 +304,30 @@ var x = function() {
 ```
 
 5.2 Avoid spaces inside of curly braces in JSX attributes and expressions or around equal signs in JSX attributes ([jsx-curly-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md)) & ([jsx-equals-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md))
-   
+
 ```javascript
 // bad
-<Hello name={ firstname } />;
-<Hello name={ firstname} />;
-<Hello name={firstname } />;
-<Hello name={
-  firstname
-} />;
-<Hello name = {firstname} />;
-<Hello name ={firstname} />;
-<Hello name= {firstname} />;
+<Hello name={firstname} />;
+<Hello name={firstname} />;
+<Hello name={firstname} />;
+<Hello name={firstname} />;
+<Hello name={firstname} />;
+<Hello name={firstname} />;
+<Hello name={firstname} />;
 
 // good
 <Hello name={firstname} />;
 <Hello name={{ firstname: 'John', lastname: 'Doe' }} />;
 <Hello>{firstname}</Hello>;
-<Hello>{ firstname }</Hello>;
-<Hello>{
-  firstname
-}</Hello>;
+<Hello>{firstname}</Hello>;
+<Hello>{firstname}</Hello>;
 <Hello name />;
 <Hello {...props} />;
 ```
-    
+
 5.3 Enforce consistent indentation style. `2 spaces`.([jsx-indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md)) & ([jsx-indent-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md)) & ([indent](https://eslint.org/docs/rules/indent))
-    
-``` javascript
+
+```javascript
 // bad
 <App>
     <Hello />
@@ -354,7 +355,7 @@ var x = function() {
 ```
 
 5.4 Avoid multiple spaces between inline JSX props. ([jsx-props-no-multi-spaces](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md))
-   
+
 ```javascript
 // bad
 <App  spacy />
@@ -379,7 +380,7 @@ var x = function() {
 ```
 
 **[Back to Top](#table-of-contents)**
-  
+
 ## [Props](#Props)
 
 6.1 Prevent missing props validation in a React component definition. ([prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md))
@@ -395,11 +396,11 @@ var Hello = createReactClass({
 // good
 var Hello = createReactClass({
   propTypes: {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
   },
   render: function() {
     return <div>Hello {this.props.name}</div>;
-  },
+  }
 });
 ```
 
@@ -407,18 +408,18 @@ var Hello = createReactClass({
 
 ```javascript
 // bad
-const MyComponent = (props) => {
-  return (<div id={props.id} />)
+const MyComponent = props => {
+  return <div id={props.id} />;
 };
 
-// good 
-const MyComponent = ({id}) => {
-  return (<div id={id} />)
+// good
+const MyComponent = ({ id }) => {
+  return <div id={id} />;
 };
 ```
 
-6.3 Prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). ([forbid-component-props]( https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md))
-   
+6.3 Prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). ([forbid-component-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md))
+
 ```javascript
 // bad
 <Hello className='foo' />
@@ -433,23 +434,23 @@ const MyComponent = ({id}) => {
 
 ```javascript
 // bad
-React.Children.map(this.props.children, (child, index) => (
+React.Children.map(this.props.children, (child, index) =>
   React.cloneElement(child, { key: index })
-))
-Children.forEach(this.props.children, (child, index) => (
+);
+Children.forEach(this.props.children, (child, index) =>
   React.cloneElement(child, { key: index })
-))
+);
 
 // good
-React.Children.map(this.props.children, (child, index) => (
+React.Children.map(this.props.children, (child, index) =>
   React.cloneElement(child, { key: child.id })
-))
-Children.forEach(this.props.children, (child, index) => (
+);
+Children.forEach(this.props.children, (child, index) =>
   React.cloneElement(child, { key: child.id })
-))
+);
 ```
 
-6.5 Prevent passing of children as props,  Children should always be actual children, not passed in as a prop. 
+6.5 Prevent passing of children as props, Children should always be actual children, not passed in as a prop.
 When using JSX, the children should be nested between the opening and closing tags. When not using JSX, the children should be passed as additional arguments to `React.createElement`. ([no-children-prop](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-children-prop.md))
 
 ```javascript
@@ -475,7 +476,7 @@ React.createElement("div", 'Child 1', 'Child 2')
 ```
 
 6.6 Ensure that the value of the prop `style` be an object or a variable that is an object. ([style-prop-object](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md))
-  
+
 ```javascript
 // bad
 <div style="color: 'red'" />
@@ -492,7 +493,7 @@ const styles = { color: "red" };
 ```
 
 6.7 Ensures that any component or prop methods used to handle events are correctly prefixed. ([jsx-handler-names](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md))
-   
+
 ```javascript
 // bad
 <MyComponent handleChange={this.handleChange} />
@@ -504,7 +505,7 @@ const styles = { color: "red" };
 ```
 
 6.8 Avoid duplicate props which can cause unexpected behaviour in your application. ([jsx-no-duplicate-props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md))
- 
+
 ```javascript
 // bad
 <Hello name="John" name="John" />;
@@ -533,35 +534,46 @@ var Hello = createReactClass({
     var component = this.hello;
   },
   render() {
-    return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
+    return (
+      <div
+        ref={c => {
+          this.hello = c;
+        }}
+      >
+        Hello, world.
+      </div>
+    );
   }
 });
 ```
 
 7.2 When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer noopener'`, however, is a severe security vulnerability ([see here for more details](https://mathiasbynens.github.io/rel-noopener)) This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer noopener'`. ([jsx-no-target-blank](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md))
-  
+
 ```javascript
 // bad
-var Hello = <a target='_blank' href="http://example.com/"></a>
-var Hello = <a target='_blank' href={ dynamicLink }></a>
+var Hello = <a target="_blank" href="http://example.com/" />;
+var Hello = <a target="_blank" href={dynamicLink} />;
 
 //good
-var Hello = <p target='_blank'></p>
-var Hello = <a target='_blank' rel='noopener noreferrer' href="http://example.com"></a>
-var Hello = <a target='_blank' href="relative/path/in/the/host"></a>
-var Hello = <a target='_blank' href="/absolute/path/in/the/host"></a>
-var Hello = <a></a>
+var Hello = <p target="_blank" />;
+var Hello = (
+  <a target="_blank" rel="noopener noreferrer" href="http://example.com" />
+);
+var Hello = <a target="_blank" href="relative/path/in/the/host" />;
+var Hello = <a target="_blank" href="/absolute/path/in/the/host" />;
+var Hello = <a />;
 ```
 
 **[Back to Top](#table-of-contents)**
 
 ## [Ordering](#Ordering)
+
 8.1 When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecycle methods, event handlers, etc. ([sort-comp](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md))
 The current Recommended Order For class components
-  1- Constructor
-  2- life cycle Methods e.g., componentDidMount, etc.
-  3- Static Methods e.g., handleSubmit, etc.
-  4- render function   
+1- Constructor
+2- life cycle Methods e.g., componentDidMount, etc.
+3- Static Methods e.g., handleSubmit, etc.
+4- render function
 
 ```javascript
 // bad
@@ -569,12 +581,12 @@ var Hello = createReactClass({
   render: function() {
     return <div>Hello</div>;
   },
-  displayName : 'Hello'
+  displayName: 'Hello'
 });
 
 // good
 var Hello = createReactClass({
-  displayName : 'Hello',
+  displayName: 'Hello',
   render: function() {
     return <div>Hello</div>;
   }
@@ -584,22 +596,23 @@ var Hello = createReactClass({
 **[Back to Top](#table-of-contents)**
 
 ## [State](#State)
+
 9.1 Prevent usage of `this.state` inside `setState` calls. Such usage of `this.state` might result in errors when two state calls are called in batch and thus referencing old state and not the current state. ([no-access-state-in-setstate](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-access-state-in-setstate.md))
-   
+
 ```javascript
-// bad 
+// bad
 function increment() {
-  this.setState({value: this.state.value + 1});
+  this.setState({ value: this.state.value + 1 });
 }
 
 // good
 function increment() {
-  this.setState(prevState => ({ value: prevState.value + 1}));
+  this.setState(prevState => ({ value: prevState.value + 1 }));
 }
 ```
 
-9.2 Avoid updating the state after a **component mount** or **component update** as it  will trigger a second `render()` call and can lead to property/layout thrashing. ([no-will-update-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-will-update-set-state.md)) & ([no-did-mount-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md))
-    
+9.2 Avoid updating the state after a **component mount** or **component update** as it will trigger a second `render()` call and can lead to property/layout thrashing. ([no-will-update-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-will-update-set-state.md)) & ([no-did-mount-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md))
+
 ```javascript
 // bad
 var Hello = createReactClass({
@@ -649,7 +662,7 @@ var Hello = createReactClass({
 ```
 
 9.3 NEVER mutate `this.state` directly, as calling `setState()` afterwards may replace the mutation you made. Treat `this.state` as if it were immutable. ([no-direct-mutation-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md))
-    
+
 ```javascript
 // bad
 var Hello = createReactClass({
@@ -693,9 +706,9 @@ class Hello extends React.Component {
   }
 }
 ```
-    
+
 9.4 Avoid updating the state during the componentWillUpdate step as it can lead to indeterminate component state and is not allowed. ([no-will-update-set-state](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-will-update-set-state.md))
-    
+
 ```javascript
 // bad
 var Hello = createReactClass({
@@ -717,7 +730,7 @@ var Hello = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }
-});    
+});
 ```
 
 **[Back to Top](#table-of-contents)**
