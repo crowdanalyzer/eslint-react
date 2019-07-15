@@ -164,7 +164,7 @@ import Footer from './Footer';
 
 ```javascript
 // bad
-var HelloJohn = <Hello name="John" />;
+var HelloJohn = <Hello name="John"></Hello>;
 
 // good
 var contentContainer = <div className="content" />;
@@ -184,7 +184,10 @@ var HelloSpace = <Hello> </Hello>;
 // bad
 var x = function() {
   return (
-    <Say firstName="John" lastName="Smith">
+    <Say 
+    firstName="John"
+    lastName="Smith"
+        >
       Hello
     </Say>
   );
