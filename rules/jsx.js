@@ -54,7 +54,7 @@ module.exports = {
      * Restrict file extensions that may contain JSX, only use .jsx extensions
      * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
      */
-    "react/jsx-filename-extension": ["error", { extensions: [".jsx, .tsx"] }],
+    "react/jsx-filename-extension": ["error", { extensions: [".jsx"] }],
 
     /**
      * Configure the position of the first property
@@ -116,6 +116,25 @@ module.exports = {
       {
         maximum: 1,
         when: "multiline",
+      },
+    ],
+
+    /**
+     * No .bind() or Arrow Functions in JSX Props.
+     * A bind call or arrow function in a JSX prop will create a brand new function on every
+     * single render. This is bad for performance, as it may cause unnecessary re-renders if
+     * a brand new function is passed as a prop to a component that uses reference equality
+     * check on the prop to determine if it should update.
+     * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
+     */
+    "react/jsx-no-bind": [
+      "error",
+      {
+        ignoreDOMComponents: false,
+        ignoreRefs: false,
+        allowArrowFunctions: false,
+        allowFunctions: false,
+        allowBind: false,
       },
     ],
 
