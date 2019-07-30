@@ -20,6 +20,10 @@
     {
       "name": "Ali Hassan <AliHassan0>",
       "email": "ali.hassan@crowdanalyzer.com"
+    },
+    {
+      "name": "Shady Mohammed <ShadyMohammed>",
+      "email": "shady.mohammed@crowdanalyzer.com"
     }
   ],
   "main": "./index",
