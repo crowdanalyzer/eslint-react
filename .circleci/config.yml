@@ -1,8 +1,7 @@
 version: 2
 references:
-  workdir: &workdir
-    /var/code
-  
+  workdir: &workdir /var/code
+
   attach_workdir: &attach_workdir
     attach_workspace:
       at: *workdir
@@ -17,9 +16,6 @@ jobs:
     <<: *images
     steps:
       - checkout
-      - run:
-          name: Copying .npmrc-example into .npmrc
-          command: cp /var/code/.npmrc-example /var/code/.npmrc
       - run:
           name: Installing dependencies
           command: npm install
