@@ -28,9 +28,9 @@
   ],
   "main": "./index",
   "scripts": {
+    "docker": "docker-compose build && docker-compose run node",
     "lint": "eslint .",
-    "depcheck": "npm-check",
-    "docker": "docker-compose build --no-cache && docker-compose run node"
+    "depcheck": "npm-check"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
