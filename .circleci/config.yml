@@ -1,14 +1,15 @@
 version: 2
 references:
-  workdir: &workdir /var/code
+  workdir: &workdir
+    /var/code
 
   attach_workdir: &attach_workdir
     attach_workspace:
       at: *workdir
 
   images: &images
-    docker:
-      - image: node:10.14.0
+    docker: 
+      - image: node:12.4.0
     working_directory: *workdir
 
 jobs:
