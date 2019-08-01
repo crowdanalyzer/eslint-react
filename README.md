@@ -110,7 +110,7 @@ function Listing({ hello }) {
 
 ## [Naming](#Naming)
 
-3.1 **Extensions**: Use `.jsx` extension for React components. ([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
+3.1 **Extensions**: Use `.jsx` extension for React components. If you use TypeScript, you will use `.tsx` extension by default. ([jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md))
   
 ```javascript
 // bad
@@ -122,6 +122,11 @@ function MyComponent() {
 // good
 // filename: MyComponent.jsx
 function MyComponent() {
+  return <div />;
+}
+
+// filename: MyComponent.tsx
+const MyComponent: React.FC = () {
   return <div />;
 }
 ```
