@@ -289,5 +289,7 @@ module.exports = {
      * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
      */
     "react/void-dom-elements-no-children": ["error"],
+    "react-hooks/rules-of-hooks": ["error"],
+    "react-hooks/exahustive-deps": ["error"]
   },
 };

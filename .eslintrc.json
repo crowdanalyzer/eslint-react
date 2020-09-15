@@ -1,3 +1,4 @@
 {
-  "extends": ["crowdanalyzer", "./index.js"]
+  "extends": ["crowdanalyzer", "./index.js"],
+  "plugins": ["react-hooks"]
 }
