@@ -37,7 +37,7 @@
     "eslint": "^7.27.0",
     "eslint-config-crowdanalyzer": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
-    "npm-check": "^5.9.2"
+    "npm-check": "^6.0.1"
   },
   "peerDependencies": {
     "babel-eslint": "^10.0.1",
